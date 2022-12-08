@@ -2,7 +2,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { getHeaderTitle } from '@react-navigation/elements';
-import { StatusBar } from 'react-native';
+import { StatusBar, View } from 'react-native';
 
 import Find from './../components/Find/Find';
 import Home from './../components/Home/Home';
@@ -16,10 +16,9 @@ const Tab = createBottomTabNavigator();
 function BottomNavigation() {
   return (
 
-    <NavigationContainer>
-
-        <StatusBar backgroundColor="#00ADB5" />    
-
+    // <NavigationContainer>   
+    // <View>
+        // <StatusBar backgroundColor="#00ADB5" />
         <Tab.Navigator initialRouteName="Home" screenOptions={{ 
             tabBarActiveTintColor: '#00ADB5', 
             tabBarHideOnKeyboard: true,
@@ -29,7 +28,7 @@ function BottomNavigation() {
             header: ({ navigation, route, options }) => {
                 const title = getHeaderTitle(options, route.name);
                 return <Header title={title} />;
-        }}}>
+        }}}> 
 
             <Tab.Screen name="Find" component={Find} options={{ tabBarLabel: 'Find', tabBarIcon: ({ color, size }) => (
                 <MaterialIcons name="search" color={color} size={size} />)
@@ -48,8 +47,11 @@ function BottomNavigation() {
             }}/>
 
         </Tab.Navigator>
+    // </View>
 
-    </NavigationContainer>
+       
+
+    // </NavigationContainer>
 
   )
 }
