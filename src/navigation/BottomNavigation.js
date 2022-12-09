@@ -16,14 +16,13 @@ const Tab = createBottomTabNavigator();
 function BottomNavigation() {
   return (
 
-    // <NavigationContainer>   
-    // <View>
-        // <StatusBar backgroundColor="#00ADB5" />
+    <>
+        <StatusBar backgroundColor="#1E293B" />
         <Tab.Navigator initialRouteName="Home" screenOptions={{ 
-            tabBarActiveTintColor: '#00ADB5', 
+            tabBarActiveTintColor: '#e5e5e5', 
             tabBarHideOnKeyboard: true,
-            tabBarStyle: { backgroundColor:"#EEEEEE", paddingTop:10, height:60 },
-            tabBarLabelStyle: { paddingVertical: 5},
+            tabBarStyle: { backgroundColor:"#1E293B", paddingTop:10, height:70, borderRadius: 10, marginHorizontal: 20, marginBottom: 20, position: 'absolute' },
+            tabBarLabelStyle: { paddingVertical: 10},
             tabBarIcon:{ color:"#eeee" }, 
             header: ({ navigation, route, options }) => {
                 const title = getHeaderTitle(options, route.name);
@@ -47,11 +46,7 @@ function BottomNavigation() {
             }}/>
 
         </Tab.Navigator>
-    // </View>
-
-       
-
-    // </NavigationContainer>
+    </>
 
   )
 }
