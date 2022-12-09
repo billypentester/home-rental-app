@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, ImageBackground, Dimensions, TextInput} from 'react-native'
+import { StyleSheet,View, ImageBackground, Dimensions, TextInput,TouchableOpacity} from 'react-native'
 import { NativeBaseProvider, Center, Box, Image, VStack, Text, Button} from 'native-base'
 
 const screenHeight = Dimensions.get('window').height;
@@ -10,24 +10,54 @@ function Welcome({navigation}) {
   return (
     <NativeBaseProvider>
       <ImageBackground
-        source={{uri:'https://images.unsplash.com/photo-1541323716073-dda4bffc2fbb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',}} resizeMode="stretch"
-        style={{height: screenHeight, width: screenWidth, justifyContent: 'center', alignItems: 'center'}}>
-          <View style={{ flex:1, backgroundColor: 'rgba(0,0,0,0.5)',width:screenWidth }}>
-            <VStack flex={2/4} justifyContent="center" alignItems="center" safeAreaTop>
-              <Image source={{uri: "https://i.pinimg.com/originals/5e/10/d7/5e10d70b73f61c76194ef63da8f5c22a.png"}} alt="Alternate Text" size="sm" width={'120'} height={'130'} />
-            </VStack>
-            <Center flex={1/4}>
-              <Text fontSize="4xl" color={'gray.300'} marginY={'2'}>Hey! Welcome</Text>
-              <Text fontSize="xl" color={'gray.300'}>Rent out of 1500 places, Visit new beautiful places.</Text>
-            </Center>
-            <Center flex={1/4}>
-              <Button size={'lg'} marginY={1}  backgroundColor={'yellow.500'} width={screenWidth-50} onPress={() => navigation.navigate('Login')}>Login</Button>
-              <Button size={'lg'} marginY={1} backgroundColor={'gray.600'} width={screenWidth-50} onPress={() => navigation.navigate('Register')}>Create Account</Button>
-            </Center>
+        source={require("home-rental-app/assets/wel.png")} resizeMode="stretch"
+        style={{flex: 1,justifyContent: "center"}}>
+          <Image
+            source={require("home-rental-app/assets/logo.png")}
+            style= {{width:250, height:400,right:-65,top:230}}
+            ></Image>
+            
+        <View style={{ flex:1, width:screenWidth, alignContent: "center" }}>
+        <TouchableOpacity style={[styles.SaveBtn,{backgroundColor:"#e8bc44",shadowColor:"yellow",top:230,right:-68}]}
+        onPress={()=>
+        {navigation.navigate('Login')}
+      }      >
+        <Text style={styles.SaveText}>LOGIN</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={[styles.SaveBtn,{backgroundColor:"grey",shadowColor:"grey",top:230,right:-68}]}
+        onPress={()=>
+        {navigation.navigate('Register')}
+      }      >
+      <Text style={styles.SaveText}>REGISTER</Text>
+      </TouchableOpacity>
           </View>
       </ImageBackground>
     </NativeBaseProvider>
   )
 }
+const styles = StyleSheet.create({
+  SaveBtn: {
+    width: "60%",
+    borderRadius: 35,
+    height: 55,
+    //alignItems: "center",
+    justifyContent: "center",
+    shadowOpacity:0.30,
+    elevation:10,
+    shadowRadius:15,
+    shadowOffset : { width: 0, height: 6},
+    borderWidth:0,
+    margin: 10
+    
+  },
+  SaveText:{
+    fontWeight:'bold',
+    color:'white',
+    fontSize:20,
+    alignSelf:'center',
+    
+  },
+});
 
 export default Welcome
