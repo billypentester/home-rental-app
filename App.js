@@ -13,8 +13,7 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <>
-      <NavigationContainer>
+    <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="Welcome" component={Welcome} />
         <Stack.Screen name="Login" component={Login} />
@@ -22,7 +21,6 @@ export default function App() {
         <Stack.Screen name="BottomNavigation" component={BottomNavigation} />
       </Stack.Navigator>
     </NavigationContainer>
-    </>
   );
 }
 
