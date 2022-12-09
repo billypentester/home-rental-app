@@ -4,10 +4,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { getHeaderTitle } from '@react-navigation/elements';
 import { StatusBar, View } from 'react-native';
 
-import Find from './../components/Find/Find';
-import Home from './../components/Home/Home';
-import Chat from './../components/Chat/Chat';
-import Setting from './../components/Setting/Setting';
+import Find from './../components/user/Find/Find';
+import Home from './../components/user/Home/Home';
+import Chat from './../components/user/Chat/Chat';
+import Setting from './../components/user/Setting/Setting';
 
 import Header from './../Header/Header';
 
