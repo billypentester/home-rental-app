@@ -7,6 +7,7 @@ import BottomNavigation from './src/navigation/BottomNavigation';
 import Welcome from './src/components/main/welcome';
 import Login from './src/components/main/Login';
 import Register from './src/components/main/Register';
+import Splash from './src/components/main/Splash';
 
 
 const Stack = createNativeStackNavigator();
@@ -15,6 +16,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name="Splash" component={Splash} />
         <Stack.Screen name="Welcome" component={Welcome} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Register" component={Register} />
