@@ -5,7 +5,7 @@ import { NativeBaseProvider, Center, Box, Image, VStack, Text, Button} from 'nat
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 
-function Main({navigation}) {
+function Welcome({navigation}) {
 
   return (
     <NativeBaseProvider>
@@ -30,4 +30,4 @@ function Main({navigation}) {
   )
 }
 
-export default Main
+export default Welcome

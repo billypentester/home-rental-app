@@ -1,13 +1,13 @@
 import React from 'react'
 import { View, Text} from 'react-native'
-import { NativeBaseProvider, Center, Box, Button} from 'native-base'
+import { NativeBaseProvider, Center, Box} from 'native-base'
 
-function Login({navigation}) {
+function Login() {
 
   return (
     <NativeBaseProvider>
       <Center flex={1}>
-        <Button onPress={() => navigation.navigate('BottomNavigation', { screen: 'Home' })}>Open Portal</Button>
+        <Box>Login Screen</Box>
       </Center>
     </NativeBaseProvider>
   )
