@@ -6,7 +6,6 @@ import {getAuth, createUserWithEmailAndPassword} from 'firebase/auth'
 import { initializeApp } from '@firebase/app'
 import { firebaseConfig } from '../../Firebase/config'
 
-
 function Register({navigation}) {
 
   const [email, setEmail] = React.useState('');
