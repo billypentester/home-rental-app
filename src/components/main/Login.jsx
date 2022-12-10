@@ -58,7 +58,7 @@ function Login({navigation}) {
         <Text style={{color: "#fff"}}>Email</Text>
         <View style={styles.textInputContainer}>
           <AntDesign name="mail" size={24} color="#bfbfbf" />
-          <TextInput style={styles.textInput} placeholder="e.g john@gmail.com" placeholderTextColor={"grey"} textContentType="emailAddress" maxLength={50} keyboardType={"email-address"}></TextInput>
+          <TextInput style={styles.textInput} placeholder="e.g john@gmail.com" placeholderTextColor={"grey"} textContentType="emailAddress" maxLength={50} keyboardType={"email-address"} value={email} onChangeText={setEmail}></TextInput>
         </View>
       </View>
 
@@ -67,7 +67,7 @@ function Login({navigation}) {
         <Text style={{color: "#fff"}}>Password</Text>
         <View style={styles.textInputContainer}>
           <AntDesign name="lock" size={24} color="#bfbfbf" />
-          <TextInput style={styles.textInput} placeholder="Enter Password" placeholderTextColor={"grey"} textContentType="password" secureTextEntry={showpass} maxLength={15}></TextInput>
+          <TextInput style={styles.textInput} placeholder="Enter Password" placeholderTextColor={"grey"} textContentType="password" secureTextEntry={showpass} maxLength={15} value={password} onChangeText={setPassword}></TextInput>
           <TouchableOpacity onPress={()=>setShowpass(!showpass)}>
             <Text style={{fontSize:12, color:"#ffff",right:10}}>Show</Text>
           </TouchableOpacity>
