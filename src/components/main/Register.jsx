@@ -72,7 +72,7 @@ function Register({navigation}) {
       <View style={{ width: "70%", marginTop: 20,marginBottom:20 }}>
         <Text style={{color: "#fff"}}>Phone Number</Text>
         <View style={styles.textInputContainer}>
-          <AntDesign name="mail" size={24} color="#bfbfbf" />
+          <AntDesign name="phone" size={24} color="#bfbfbf" />
           <TextInput style={styles.textInput} placeholder="03*********" placeholderTextColor={"grey"} textContentType="telephoneNumber" maxLength={11} keyboardType={"phone-pad"}></TextInput>
         </View>
       </View>
