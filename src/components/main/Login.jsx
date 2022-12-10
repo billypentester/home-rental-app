@@ -46,10 +46,12 @@ function Login({navigation}) {
         source={require("home-rental-app/assets/bg.png")} resizeMode="stretch"
         style={{flex: 1,justifyContent: "center"}}>
           <ScrollView>
+          <Center flex={1}>
           <Image
             source={require("home-rental-app/assets/logo.png")}
-            style= {{width:200, height:300,right:-85}}
+            style= {{width:200, height:300,right:10}}
             ></Image>
+            </Center>
             
       <Center flex={1}>
       <Text style={{ fontWeight: "700", fontSize: 35, color: "#fff",bottom: 10, right:10 }}>Login</Text>

@@ -16,6 +16,7 @@ function Splash({navigation}) {
 
   return (
     <NativeBaseProvider>
+      <View flex={1}>
       <ImageBackground
         source={require("home-rental-app/assets/s.gif")} resizeMode="stretch"
         style={{flex: 1,justifyContent: "center"}}>
@@ -24,6 +25,7 @@ function Splash({navigation}) {
             style= {{width:350, height:500,right:-18}}
             ></Image>
       </ImageBackground>
+      </View>
     </NativeBaseProvider>
   )
 }

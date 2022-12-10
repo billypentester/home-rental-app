@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text,ImageBackground, Image, StyleSheet,Alert,TextInput, TouchableOpacity, ToastAndroid} from 'react-native'
+import { View, Text,ImageBackground, Image, StyleSheet,Alert,TextInput, TouchableOpacity, ToastAndroid,StatusBar} from 'react-native'
 import { NativeBaseProvider, Center, Box, Button, Input, ScrollView} from 'native-base'
 import { AntDesign } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
@@ -7,6 +7,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import {getAuth, createUserWithEmailAndPassword} from 'firebase/auth'
 import { initializeApp } from '@firebase/app'
 import { firebaseConfig } from '../../Firebase/config'
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 function Register({navigation}) {
 
@@ -44,10 +45,13 @@ function Register({navigation}) {
         source={require("home-rental-app/assets/bg.png")} resizeMode="stretch"
         style={{flex: 1,justifyContent: "center"}}>
           <ScrollView>
+          
+          <Center flex={1}>
           <Image
             source={require("home-rental-app/assets/logo.png")}
-            style= {{width:200, height:300,right:-85}}
+            style= {{width:200, height:300,right:10}}
             ></Image>
+            </Center>
             
       <Center flex={1}>
       <Text style={{ fontWeight: "700", fontSize: 35, color: "#fff",bottom: 16, right:8 }}>REGISTER</Text>

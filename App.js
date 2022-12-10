@@ -22,7 +22,9 @@ export default function App() {
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="BottomNavigation" component={BottomNavigation} />
       </Stack.Navigator>
+      <StatusBar style="auto" />
     </NavigationContainer>
+    
   );
 }
 
