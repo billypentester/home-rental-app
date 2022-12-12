@@ -11,7 +11,7 @@ function Welcome({navigation}) {
     <NativeBaseProvider>
       <ImageBackground
         source={{uri:'https://images.unsplash.com/photo-1541323716073-dda4bffc2fbb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',}} resizeMode="stretch"
-        style={{height: screenHeight, width: screenWidth, justifyContent: 'center', alignItems: 'center'}}>
+        style={{height: '100%', width: '100%', justifyContent: 'center', alignItems: 'center'}}>
           <View style={{ flex:1, backgroundColor: 'rgba(0,0,0,0.5)',width:screenWidth }}>
             <Center flex={2} justifyContent="center" alignItems="center" safeAreaTop>
               <Image source={{uri: "https://i.pinimg.com/originals/5e/10/d7/5e10d70b73f61c76194ef63da8f5c22a.png"}} alt="logo" width={'62%'} height={'70%'} />
