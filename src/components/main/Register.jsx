@@ -39,18 +39,24 @@ function Register({navigation}) {
       <ImageBackground source={pic} resizeMode="stretch" style={styles.background}>
           <View style={styles.wrapper}>
             <Center flex={2} justifyContent="center" alignItems="center">
-              <Image source={{uri: "https://i.pinimg.com/originals/5e/10/d7/5e10d70b73f61c76194ef63da8f5c22a.png"}} alt="logo" width={'50%'} height={'60%'} />
+              <Image source={{uri: "https://www.transparentpng.com/thumb/home/J4GYui-home-round-button-icon-png.png"}} alt="logo" width={'30%'} height={'60%'} />
             </Center>
-            <Box flex={2} marginX={5}>
-              <Text fontSize="4xl" textAlign={'center'} color={'gray.300'} marginY={'2'}>Hey! Welcome</Text>
-              <Input InputLeftElement={<Icon as={<MaterialIcons name="person" />} size={5} marginX="2" color="gray.300" />} marginY={'5'} size="lg" color={'white'} placeholder="Email" variant={'underlined'} />
-              <Input InputLeftElement={<Icon as={<MaterialIcons name="lock" />} size={5} marginX="2" color="gray.300" />} marginY={'5'} size="lg" color={'white'} placeholder="Password" variant={'underlined'} />
-              <Link href="https://nativebase.io" _text={{color: "gray.200" }} textAlign={'end'} mt={-0.5} _web={{mb: -2}}>Forget Password ?</Link>
+            <Box flex={6} margin={5}>
+              <Text fontSize="3xl" textAlign={'center'} color={'gray.300'} marginY={'2'}>Hey! Welcome</Text>
+              <Input InputLeftElement={<Icon as={<MaterialIcons name="person" />} size={5} marginX="2" color="gray.300" />} focusOutlineColor={'yellow.500'} marginY={'5'} size="lg" color={'white'} placeholder="Full Name" variant={'underlined'} />
+              <Input InputLeftElement={<Icon as={<MaterialIcons name="email" />} size={5} marginX="2" color="gray.300" />} focusOutlineColor={'yellow.500'} marginY={'5'} size="lg" color={'white'} placeholder="Email" variant={'underlined'} />
+              <Input InputLeftElement={<Icon as={<MaterialIcons name="lock" />} size={5} marginX="2" color="gray.300" />} focusOutlineColor={'yellow.500'} marginY={'5'} size="lg" color={'white'} placeholder="Password" variant={'underlined'} />
+              <Button size={'lg'} marginY={2} onPress={IsSignUp} backgroundColor={'yellow.500'}_text={{color: "black" }} width={'100%'}>Sign up</Button>
+              <Center marginY={2} _text={{ color:'gray.300', fontSize:'md' }}>or</Center>
+              <Box justifyContent={'space-around'} alignContent={'space-around'} flexDirection={'row'}>
+                <Button size={'lg'} marginY={2} backgroundColor={'red.500'} _text={{color: "white" }} width={'45%'}>Google</Button>
+                <Button size={'lg'} marginY={2} backgroundColor={'blue.500'} _text={{color: "white" }} width={'45%'}>Facebook</Button>              
+              </Box>
+              <Center marginY={2} flexDirection={'row'}>
+                <Text color={'gray.300'} fontSize={'md'}>Already have an account? </Text>
+                <Link href="https://nativebase.io" _text={{color: "gray.300", fontSize:'md'}}>Login</Link>
+              </Center>
             </Box>
-            <Center flex={1} m={5}>
-              <Button size={'lg'} marginY={2} onPress={IsSignUp} backgroundColor={'gray.300'}_text={{color: "black" }} variant="outline" width={'100%'}>Login</Button>
-              <Text marginY={2} color={'gray.300'}>Don't have an acccount? Sign up</Text>
-            </Center>
           </View>
       </ImageBackground>
     </NativeBaseProvider>
