@@ -1,6 +1,9 @@
 import React from 'react'
-import { View, Text} from 'react-native'
-import { NativeBaseProvider, Center, Box, Button, Input} from 'native-base'
+import { View, ImageBackground, Dimensions, TextInput, Input} from 'react-native'
+import { NativeBaseProvider, Center, Image, Text, Button} from 'native-base'
+import styles from './../../styles/index'
+import pic from './../../images/background.jpg'
+
 
 import {getAuth, signInWithEmailAndPassword} from 'firebase/auth'
 import { initializeApp } from '@firebase/app'
@@ -35,11 +38,14 @@ function Login({navigation}) {
 
   return (
     <NativeBaseProvider>
-      <Center flex={1}>
-        <Input size="lg" my={'2'} w={'75%'} variant={'underlined'} placeholder="Email" value={email} onChangeText={setEmail} />
-        <Input size="lg" my={'2'} w={'75%'} variant={'underlined'} placeholder="Password" value={password} onChangeText={setPassword} />
-        <Button my={'2'} w={'75%'} onPress={IsLoginIn}>Log in</Button>
-      </Center>
+      <ImageBackground source={pic} resizeMode="stretch" style={styles.background}>
+          <View style={styles.wrapper}>
+            <Center flex={1}>
+              <Text fontSize="4xl" color={'gray.300'} marginY={'2'}>Hey! Welcome</Text>
+              <Text fontSize="xl" color={'gray.300'}>Rent out of 1500 places, Visit new beautiful places.</Text>
+            </Center>
+          </View>
+      </ImageBackground>
     </NativeBaseProvider>
   )
 }

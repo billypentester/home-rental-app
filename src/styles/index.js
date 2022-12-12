@@ -2,19 +2,17 @@ import { StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
     
-    dark:{
-        backgroundColor: '#303841',
+    background:{
+        height: '100%', 
+        width: '100%', 
+        justifyContent: 'center', 
+        alignItems: 'center'
     },
-    grey:{
-        backgroundColor: '#3A4750',
-    },
-    teal:{
-        backgroundColor: '#00ADB5',
-    },
-    light:{
-        backgroundColor: '#EEEEEE',
+    wrapper:{
+        flex:1, 
+        backgroundColor: 'rgba(0,0,0,0.5)',
+        width:'100%'
     }
-
 
 });
 
