@@ -29,7 +29,7 @@ function Login({navigation}) {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage)
-        Alert.alert("Login error","invalid Email or Password              (Please Recheck)",[{
+        Alert.alert("Login error","invalid Email or Password(Please Recheck)",[{
           text:'Ok'},
           {text: 'cancel'}
         ] , {cancelable: true})
@@ -42,21 +42,22 @@ function Login({navigation}) {
   return (
     <NativeBaseProvider>
       
+      <View flex={1} width={"100%"} height={"100%"} >
       <ImageBackground
         source={require("home-rental-app/assets/bg.png")} resizeMode="stretch"
         style={{flex: 1,justifyContent: "center"}}>
-          <ScrollView>
-          <Center flex={1}>
+
+          <View flex={0.3} alignItems={"center"}>
           <Image
             source={require("home-rental-app/assets/logo.png")}
-            style= {{width:200, height:300,right:10}}
+            style= {{width:"70%", height:100,right:10,marginTop:50}}
             ></Image>
-            </Center>
+            </View>
             
-      <Center flex={1}>
-      <Text style={{ fontWeight: "700", fontSize: 35, color: "#fff",bottom: 10, right:10 }}>Login</Text>
+      <View flex={0.38}  alignItems={"center"}>
+      <Text style={{ fontWeight: "700", fontSize: 35, color: "#fff",marginBottom:10, right:10 }}>Login</Text>
 
-      <View style={{ width: "70%", marginTop: 50,marginBottom:20 }}>
+      <View style={{ width: "70%", marginTop: 50,marginBottom:20, }}>
         <Text style={{color: "#fff"}}>Email</Text>
         <View style={styles.textInputContainer}>
           <AntDesign name="mail" size={24} color="#bfbfbf" />
@@ -76,10 +77,14 @@ function Login({navigation}) {
         </View>
       </View>
 
+      </View>
+
+      <View flex={0.32} alignItems={"center"} >
+
       <TouchableOpacity
         style={{
-          marginTop: 30,
-          width: "60%",
+          marginTop: 10,
+          width: "55%",
           height: 40,
         }}
         onPress={IsLoginIn}
@@ -96,25 +101,10 @@ function Login({navigation}) {
 
       <Text style={{ marginTop: 20, color: "#777" }}>continue with</Text>
 
-      <TouchableOpacity
-        style={{
-          marginTop: 30,
-          width: "20%",
-          height: 50,
-          alignContent:"space-between",right: -30,bottom:13
-        }}>
-         <Image
-            source={require("home-rental-app/assets/fb.png")}
-            style={{ marginHorizontal: 5 ,height:70,width:100}}
-            ></Image>
-        </TouchableOpacity>
-
         <TouchableOpacity
         style={{
-          marginTop: 30,
-          width: "10%",
-          height: 60,
-          alignContent:"space-between",right:75,bottom:100
+          width: "20%",
+          alignItems:"center"
         }}>
          <Image
             source={require("home-rental-app/assets/google.png")}
@@ -122,23 +112,22 @@ function Login({navigation}) {
             ></Image>
         </TouchableOpacity>
 
-        <Text style={{ bottom:35,right:40, color: "#777777" }}>Do not have Account?</Text>
+        <Text style={{ right:40, color: "#777777",marginTop:30 }}>Do not have Account?</Text>
 
       <TouchableOpacity style={{
-        marginTop: 30,
           width: "30%",
-          height: 60,
-          alignContent:"space-between",right:-95,bottom:85}}
+         right:-95}}
         onPress={()=>
         {navigation.navigate('Register')}
       }      >
-        <Text style={{color:"#ffff",}}>REGISTER</Text>
+        <Text style={{color:"#ffff",bottom:19}}>REGISTER</Text>
       </TouchableOpacity>
-        
-      
-      </Center>
-      </ScrollView>
+
+      </View>
+  
       </ImageBackground>
+
+      </View>
       
     </NativeBaseProvider>
   )

@@ -29,7 +29,7 @@ function Register({navigation}) {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage)
-        Alert.alert("SIGN UP error","Something wrong with your Entries              (Please Recheck)",[{
+        Alert.alert("SIGN UP error","Something wrong with your Entries(Please Recheck)",[{
           text:'Ok'},
           {text: 'cancel'}
         ] , {cancelable: true})
@@ -41,19 +41,19 @@ function Register({navigation}) {
   return (
     <NativeBaseProvider>
       
+      <View flew={1} width={"100%"} height={"100%"}  >
       <ImageBackground
         source={require("home-rental-app/assets/bg.png")} resizeMode="stretch"
         style={{flex: 1,justifyContent: "center"}}>
-          <ScrollView>
           
-          <Center flex={1}>
+          <View flex={0.3}  alignItems={"center"}>
           <Image
             source={require("home-rental-app/assets/logo.png")}
-            style= {{width:200, height:300,right:10}}
+            style= {{width:"70%", height:300,right:10}}
             ></Image>
-            </Center>
+            </View>
             
-      <Center flex={1}>
+      <View flex={0.58} alignItems={"center"}>
       <Text style={{ fontWeight: "700", fontSize: 35, color: "#fff",bottom: 16, right:8 }}>REGISTER</Text>
 
       <View style={{ width: "70%", marginTop: 20,marginBottom:20 }}>
@@ -94,10 +94,13 @@ function Register({navigation}) {
         </View>
       </View>
 
+      </View>
+
+
+      <View flex={0.12} alignItems={"center"}>
       <TouchableOpacity
         style={{
-          marginTop: 30,
-          width: "60%",
+          width: "50%",
           height: 40,
         }}
         onPress={IsSignUp}
@@ -111,12 +114,13 @@ function Register({navigation}) {
           <Text style={{ color: "white", fontWeight: "bold" }}>SUBMIT</Text>
         </LinearGradient>
       </TouchableOpacity>
+
+      </View>
         
       
-      </Center>
-      </ScrollView>
-      </ImageBackground>
       
+      </ImageBackground>
+      </View>
     </NativeBaseProvider>
   )
 }

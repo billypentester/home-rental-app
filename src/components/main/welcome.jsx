@@ -9,23 +9,30 @@ function Welcome({navigation}) {
 
   return (
     <NativeBaseProvider>
+
+      <View flex={1} width={"100%"} height={"100%"}>
+
       <ImageBackground
         source={require("home-rental-app/assets/wel.png")} resizeMode="stretch"
         style={{flex: 1,justifyContent: "center"}}>
+        
+        
+        <View style={{ flex:0.7, width:"100%", alignItems: "center" }}>
           <Image
             source={require("home-rental-app/assets/logo.png")}
-            style= {{width:250, height:400,right:-65,top:230}}
+            style= {{width:250, height:400,top:230}}
             ></Image>
+        </View>
             
-        <View style={{ flex:1, width:screenWidth, alignContent: "center" }}>
-        <TouchableOpacity style={[styles.SaveBtn,{backgroundColor:"#e8bc44",shadowColor:"yellow",top:230,right:-68}]}
+      <View style={{ flex:0.3, width:"100%", alignItems: "center"}}>
+      <TouchableOpacity style={[styles.SaveBtn,{backgroundColor:"#e8bc44",shadowColor:"yellow",marginTop:40}]}
         onPress={()=>
         {navigation.navigate('Login')}
       }      >
         <Text style={styles.SaveText}>LOGIN</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={[styles.SaveBtn,{backgroundColor:"grey",shadowColor:"grey",top:230,right:-68}]}
+      <TouchableOpacity style={[styles.SaveBtn,{backgroundColor:"grey",shadowColor:"grey",marginTop:20}]}
         onPress={()=>
         {navigation.navigate('Register')}
       }      >
@@ -33,6 +40,8 @@ function Welcome({navigation}) {
       </TouchableOpacity>
           </View>
       </ImageBackground>
+
+      </View>
     </NativeBaseProvider>
   )
 }
@@ -41,7 +50,6 @@ const styles = StyleSheet.create({
     width: "60%",
     borderRadius: 35,
     height: 55,
-    //alignItems: "center",
     justifyContent: "center",
     shadowOpacity:0.30,
     elevation:10,
