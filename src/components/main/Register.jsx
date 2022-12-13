@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, ImageBackground,TouchableOpacity } from 'react-native'
+import { View, ImageBackground,TouchableOpacity,Pressable } from 'react-native'
 import { NativeBaseProvider, Box, Input, Center, Image, Button, Text, Icon, Link} from 'native-base'
 import styles from './../../styles/index'
 
@@ -46,11 +46,10 @@ function Register({navigation}) {
             <Text fontSize="4xl" textAlign={'center'} fontWeight={"800"} color={'gray.300'} marginY={'2'}>Register</Text>
             <Input InputLeftElement={<Icon as={<MaterialIcons name="person" />} size={6} marginX="2" color="gray.300" />} focusOutlineColor={'yellow.500'} marginY={'5'} size="lg" color={'white'} placeholder="User Name" variant={"rounded"} keyboardType={"default"} maxLength={25}/>
               <Input InputLeftElement={<Icon as={<MaterialIcons name="mail" />} size={6} marginX="2" color="gray.300" />} focusOutlineColor={'yellow.500'} marginY={'5'} size="lg" color={'white'} placeholder="Email" variant={"rounded"} keyboardType={"email-address"} value={email} onChangeText={setEmail}/>
-              <Input InputLeftElement={<Icon as={<MaterialIcons name="lock" />} size={6} marginX="2" color="gray.300" />} focusOutlineColor={'yellow.500'} marginY={'5'} size="lg" color={'white'} placeholder="Password" variant={'rounded'} keyboardType={"password"} secureTextEntry={showpass} value={password} onChangeText={setPassword} />
+              <Input type={showpass ? "password" : "text"} InputLeftElement={<Icon as={<MaterialIcons name="lock" />} size={6} marginX="2" color="gray.300" />} InputRightElement={<Pressable onPress={() => setShowpass(!showpass)}>
+            <Icon as={<MaterialIcons name={showpass ? "visibility-off" : "visibility"} />} size={5} mr="2" color="muted.400" />
+            </Pressable>} focusOutlineColor={'yellow.500'} marginY={'5'} size="lg" color={'white'} placeholder="Password" variant={'rounded'} keyboardType={"password"}  value={password} onChangeText={setPassword} />
               
-              <TouchableOpacity onPress={()=>setShowpass(!showpass)} >
-            <Text style={{fontSize:14, color:"#ffff",textAlign:"center",fontWeight:"600"}}>Show Password</Text>
-            </TouchableOpacity>
 
               <Button size={'lg'} marginY={5} onPress={IsSignUp} backgroundColor={'#344D67'}_text={{color: "white",fontWeight:"600" }} width={'100%'}>Sign In</Button>
               <Center marginY={2} _text={{ color:'gray.300', fontSize:'md' }}>or</Center>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, ImageBackground,TouchableOpacity } from 'react-native'
-import { NativeBaseProvider, Box, Input, Center, Image, Button, Text, Icon, Link,Alert} from 'native-base'
+import { NativeBaseProvider, Box, Input, Center, Image, Button, Text, Icon, Link,Alert,Pressable} from 'native-base'
 import styles from './../../styles/index'
 import { MaterialIcons } from "@expo/vector-icons";
 import { LinearGradient } from 'react-native-svg';
@@ -48,13 +48,11 @@ function Login({navigation}) {
           <Box flex={2} marginX={5}>
             <Text fontSize="4xl" textAlign={'center'} fontWeight={"800"} color={'gray.300'} marginY={'2'} >Login</Text>
             <Input InputLeftElement={<Icon as={<MaterialIcons name="mail" />} size={6} marginX="2" color="gray.300" />} focusOutlineColor={'yellow.500'} marginY={'5'} size="lg" color={'white'} placeholder="Email" variant={"rounded"} keyboardType={"email-address"} value={email} onChangeText={setEmail} />
-            <Input InputLeftElement={<Icon as={<MaterialIcons name="lock" />} size={6} marginX="2" color="gray.300" />} focusOutlineColor={'yellow.500'} marginY={'5'} size="lg" color={'white'} placeholder="Password" variant={'rounded'} keyboardType={"password"} secureTextEntry={showpass} value={password} onChangeText={setPassword} />
-
-            <TouchableOpacity onPress={()=>setShowpass(!showpass)} >
-            <Text style={{fontSize:14, color:"#ffff",textAlign:"center",fontWeight:"600"}}>Show Password</Text>
-            </TouchableOpacity>
+            <Input type={showpass ? "password" : "text"} InputLeftElement={<Icon as={<MaterialIcons name="lock" />} size={6} marginX="2" color="gray.300" />} InputRightElement={<Pressable onPress={() => setShowpass(!showpass)}>
+            <Icon as={<MaterialIcons name={showpass ? "visibility-off" : "visibility"} />} size={5} mr="2" color="muted.400" />
+            </Pressable>} focusOutlineColor={'yellow.500'} marginY={'5'} size="lg" color={'white'} placeholder="Password" variant={'rounded'} keyboardType={"password"}  value={password} onChangeText={setPassword} />
             
-            <TouchableOpacity style={{alignItems:"center",marginTop:20}}>
+            <TouchableOpacity style={{alignItems:"center",marginTop:3}}>
               <Text style={{color: "white", fontSize:16,textDecorationLine:"underline" }} >Forget Password ?</Text>
             </TouchableOpacity>
           </Box>
