@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, ImageBackground } from 'react-native'
+import { View, ImageBackground, TouchableOpacity } from 'react-native'
 import { NativeBaseProvider, Box, Input, Center, Image, Button, Text, Icon, Link} from 'native-base'
 import styles from './../../styles/index'
 import pic from './../../images/background.jpg'
@@ -54,7 +54,9 @@ function Register({navigation}) {
               </Box>
               <Center marginY={2} flexDirection={'row'}>
                 <Text color={'gray.300'} fontSize={'md'}>Already have an account? </Text>
-                <Link href="https://nativebase.io" _text={{color: "gray.300", fontSize:'md'}}>Login</Link>
+                <TouchableOpacity onPress={()=>{ navigation.navigate('Login') }}>
+                  <Text _text={{color: "gray.300", fontSize:'md'}}>Login</Text>
+                </TouchableOpacity>
               </Center>
             </Box>
           </View>
