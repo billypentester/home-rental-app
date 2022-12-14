@@ -1,8 +1,9 @@
 import React from 'react'
-import { View, Text,ImageBackground, Image, StyleSheet,Alert,TextInput, TouchableOpacity, ToastAndroid} from 'react-native'
-import { NativeBaseProvider, Center, Box, Button, Input, ScrollView} from 'native-base'
-import { AntDesign } from "@expo/vector-icons";
-import { LinearGradient } from "expo-linear-gradient";
+import { View, ImageBackground,TouchableOpacity,Pressable } from 'react-native'
+import { NativeBaseProvider, Box, Input, Center, Image, Button, Text, Icon, Link} from 'native-base'
+import styles from './../../styles/index'
+
+import { MaterialIcons } from "@expo/vector-icons";
 
 import {getAuth, createUserWithEmailAndPassword} from 'firebase/auth'
 import { initializeApp } from '@firebase/app'
@@ -28,10 +29,7 @@ function Register({navigation}) {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage)
-        Alert.alert("SIGN UP error","Something wrong with your Entries              (Please Recheck)",[{
-          text:'Ok'},
-          {text: 'cancel'}
-        ] , {cancelable: true})
+        alert(errorCode)
       }
     );
 
@@ -39,96 +37,37 @@ function Register({navigation}) {
 
   return (
     <NativeBaseProvider>
-      
-      <ImageBackground
-        source={require("home-rental-app/assets/bg.png")} resizeMode="stretch"
-        style={{flex: 1,justifyContent: "center"}}>
-          <ScrollView>
-          <Image
-            source={require("home-rental-app/assets/logo.png")}
-            style= {{width:200, height:300,right:-85}}
-            ></Image>
-            
-      <Center flex={1}>
-      <Text style={{ fontWeight: "700", fontSize: 35, color: "#fff",bottom: 16, right:8 }}>REGISTER</Text>
+      <ImageBackground source={require("home-rental-app/assets/bg.png")} resizeMode="stretch" style={styles.background}>
+          <View style={styles.wrapper}>
+            <Center flex={2} justifyContent="center" alignItems="center">
+              <Image source={require("home-rental-app/assets/logo.png")} alt="logo" width={'70%'} height={'50%'} />
+            </Center>
+            <Box flex={6} margin={5}>
+            <Text fontSize="4xl" textAlign={'center'} fontWeight={"800"} color={'gray.300'} marginY={'2'}>Register</Text>
+            <Input InputLeftElement={<Icon as={<MaterialIcons name="person" />} size={6} marginX="2" color="gray.300" />} focusOutlineColor={'yellow.500'} marginY={'5'} size="lg" color={'white'} placeholder="User Name" variant={"rounded"} keyboardType={"default"} maxLength={25}/>
+              <Input InputLeftElement={<Icon as={<MaterialIcons name="mail" />} size={6} marginX="2" color="gray.300" />} focusOutlineColor={'yellow.500'} marginY={'5'} size="lg" color={'white'} placeholder="Email" variant={"rounded"} keyboardType={"email-address"} value={email} onChangeText={setEmail}/>
+              <Input type={showpass ? "password" : "text"} InputLeftElement={<Icon as={<MaterialIcons name="lock" />} size={6} marginX="2" color="gray.300" />} InputRightElement={<Pressable onPress={() => setShowpass(!showpass)}>
+            <Icon as={<MaterialIcons name={showpass ? "visibility-off" : "visibility"} />} size={5} mr="2" color="muted.400" />
+            </Pressable>} focusOutlineColor={'yellow.500'} marginY={'5'} size="lg" color={'white'} placeholder="Password" variant={'rounded'} keyboardType={"password"}  value={password} onChangeText={setPassword} />
+              
 
-      <View style={{ width: "70%", marginTop: 20,marginBottom:20 }}>
-        <Text style={{color: "#fff"}}>UserName</Text>
-        <View style={styles.textInputContainer}>
-          <AntDesign name="user" size={24} color="#bfbfbf" />
-          <TextInput style={styles.textInput} placeholder="e.g Ali" placeholderTextColor={"grey"} textContentType="username" maxLength={40} keyboardAppearance={"dark"}></TextInput>
-        </View>
-      </View>
-
-
-      <View style={{ width: "70%", marginTop: 20,marginBottom:20 }}>
-        <Text style={{color: "#fff"}}>Email</Text>
-        <View style={styles.textInputContainer}>
-          <AntDesign name="mail" size={24} color="#bfbfbf" />
-          <TextInput style={styles.textInput} placeholder="e.g john@gmail.com" placeholderTextColor={"grey"} textContentType="emailAddress" maxLength={50} keyboardType={"email-address"}></TextInput>
-        </View>
-      </View>
-
-      <View style={{ width: "70%", marginTop: 20,marginBottom:20 }}>
-        <Text style={{color: "#fff"}}>Phone Number</Text>
-        <View style={styles.textInputContainer}>
-          <AntDesign name="mail" size={24} color="#bfbfbf" />
-          <TextInput style={styles.textInput} placeholder="03*********" placeholderTextColor={"grey"} textContentType="telephoneNumber" maxLength={11} keyboardType={"phone-pad"}></TextInput>
-        </View>
-      </View>
-
-
-
-      <View style={{ width: "70%", marginTop: 20 }}>
-        <Text style={{color: "#fff"}}>Password</Text>
-        <View style={styles.textInputContainer}>
-          <AntDesign name="lock" size={24} color="#bfbfbf" />
-          <TextInput style={styles.textInput} placeholder="Enter Password" placeholderTextColor={"grey"} textContentType="password" secureTextEntry={showpass} maxLength={15}></TextInput>
-          <TouchableOpacity onPress={()=>setShowpass(!showpass)}>
-            <Text style={{fontSize:12, color:"#ffff",right:10}}>Show</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-
-      <TouchableOpacity
-        style={{
-          marginTop: 30,
-          width: "60%",
-          height: 40,
-        }}
-        onPress={IsSignUp}
-      >
-        <LinearGradient
-          style={{ width: "100%", height: "100%", borderRadius: 20, alignItems: "center", justifyContent: "center" }}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
-          colors={["#63d1dc", "#BA94D1", "#59C1BD"]}
-        >
-          <Text style={{ color: "white", fontWeight: "bold" }}>SUBMIT</Text>
-        </LinearGradient>
-      </TouchableOpacity>
-        
-      
-      </Center>
-      </ScrollView>
+              <Button size={'lg'} marginY={5} onPress={IsSignUp} backgroundColor={'#344D67'}_text={{color: "white",fontWeight:"600" }} width={'100%'}>Sign In</Button>
+              <Center marginY={2} _text={{ color:'gray.300', fontSize:'md' }}>or</Center>
+              <Box justifyContent={'space-around'} alignContent={'space-around'} flexDirection={'row'}>
+                <Button onPress={()=>navigation.navigate("Login")} size={'lg'} marginY={2} backgroundColor={'red.500'} _text={{color: "white",fontWeight:"600" }} width={'45%'}>Google</Button>
+                <Button  size={'lg'} marginY={2} backgroundColor={'blue.500'} _text={{color: "white",fontWeight:"600" }} width={'45%'}>Facebook</Button>              
+              </Box>
+              <Center marginY={2} flexDirection={'row'}>
+                <Text color={'gray.300'} fontSize={'md'}>Already have an account? </Text>
+                <TouchableOpacity onPress={()=>navigation.navigate("Login")}> 
+              <Text style={{color: "white", fontSize:15, textDecorationLine:"underline"}}>Log In</Text>
+              </TouchableOpacity> 
+              </Center>
+            </Box>
+          </View>
       </ImageBackground>
-      
     </NativeBaseProvider>
   )
 }
-
-const styles = StyleSheet.create({
-  textInput: { marginLeft: 10, height: 40, width: "90%",color:"#fff" },
-  textInputContainer: {
-    flexDirection: "row",
-    width: "100%",
-    justifyContent: "flex-start",
-    alignItems: "center",
-    borderBottomWidth: 1,
-    borderBottomColor: "#ffff",
-    
-  },
-
-});
 
 export default Register
