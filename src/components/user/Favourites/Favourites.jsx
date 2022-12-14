@@ -2,15 +2,15 @@ import React from 'react'
 import { View, Text} from 'react-native'
 import { NativeBaseProvider, Center, Box} from 'native-base'
 
-function Find() {
+function Favourites() {
 
   return (
     <NativeBaseProvider>
       <Center flex={1}>
-        <Box>Find Screen</Box>
+        <Box>Favourites</Box>
       </Center>
     </NativeBaseProvider>
   )
 }
 
-export default Find
+export default Favourites

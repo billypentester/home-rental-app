@@ -24,7 +24,7 @@ function Login({navigation}) {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         console.log("User logged in");
-        navigation.navigate('BottomNavigation', {screen: 'Home'})
+        navigation.navigate('BottomNavigation', {screen: 'Explore'})
       })
       .catch((error) => {
         const errorCode = error.code;

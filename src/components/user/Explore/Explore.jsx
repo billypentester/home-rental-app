@@ -2,15 +2,15 @@ import React from 'react'
 import { View, Text} from 'react-native'
 import { NativeBaseProvider, Center, Box} from 'native-base'
 
-function Home() {
+function Explore() {
 
   return (
     <NativeBaseProvider>
       <Center flex={1}>
-        <Box>Home Screen</Box>
+        <Box>Explore</Box>
       </Center>
     </NativeBaseProvider>
   )
 }
 
-export default Home
+export default Explore

@@ -23,7 +23,7 @@ function Register({navigation}) {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         console.log("User created");
-        navigation.navigate('BottomNavigation', {screen: 'Home'})
+        navigation.navigate('BottomNavigation', {screen: 'Explore'})
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -39,8 +39,8 @@ function Register({navigation}) {
     <NativeBaseProvider>
       <ImageBackground source={require("home-rental-app/assets/bg.png")} resizeMode="stretch" style={styles.background}>
           <View style={styles.wrapper}>
-            <Center flex={2} justifyContent="center" alignItems="center">
-              <Image source={require("home-rental-app/assets/logo.png")} alt="logo" width={'70%'} height={'50%'} />
+            <Center flex={1.5} justifyContent="center" alignItems="center">
+              <Image source={require("home-rental-app/assets/logo.png")} alt="logo" width={'50%'} height={'50%'} />
             </Center>
             <Box flex={6} margin={5}>
             <Text fontSize="4xl" textAlign={'center'} fontWeight={"800"} color={'gray.300'} marginY={'2'}>Register</Text>

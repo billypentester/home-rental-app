@@ -2,15 +2,15 @@ import React from 'react'
 import { View, Text } from 'react-native'
 import { NativeBaseProvider, Center, Box} from 'native-base'
 
-function Setting() {
+function Account() {
 
   return (
     <NativeBaseProvider>
       <Center flex={1}>
-        <Box>Setting Screen</Box>
+        <Box>Account</Box>
       </Center>
     </NativeBaseProvider>
   )
 }
 
-export default Setting
+export default Account

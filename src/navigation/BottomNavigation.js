@@ -4,10 +4,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import { getHeaderTitle } from '@react-navigation/elements';
 import { StatusBar, View } from 'react-native';
 
-import Find from './../components/user/Find/Find';
-import Home from './../components/user/Home/Home';
+
+import Explore from './../components/user/Explore/Explore';
+import Favourites from './../components/user/Favourites/Favourites';
 import Chat from './../components/user/Chat/Chat';
-import Setting from './../components/user/Setting/Setting';
+import Account from './../components/user/Account/Account';
 
 import Header from './../Header/Header';
 
@@ -18,10 +19,11 @@ function BottomNavigation() {
 
     <>
         <StatusBar backgroundColor="#1E293B" />
-        <Tab.Navigator initialRouteName="Home" screenOptions={{ 
+        <Tab.Navigator initialRouteName="Explore" screenOptions={{ 
+            
             tabBarActiveTintColor: '#e5e5e5', 
             tabBarHideOnKeyboard: true,
-            tabBarStyle: { backgroundColor:"#1E293B", paddingTop:10, height:70, borderRadius: 10, marginHorizontal: 20, marginBottom: 20, position: 'absolute' },
+            tabBarStyle: { backgroundColor:"#1E293B", paddingTop:10, height:70, borderRadius: 20, marginHorizontal: 20, marginBottom: 10, position: 'absolute' },
             tabBarLabelStyle: { paddingVertical: 10},
             tabBarIcon:{ color:"#eeee" }, 
             header: ({ navigation, route, options }) => {
@@ -29,20 +31,20 @@ function BottomNavigation() {
                 return <Header title={title} />;
         }}}> 
 
-            <Tab.Screen name="Find" component={Find} options={{ tabBarLabel: 'Find', tabBarIcon: ({ color, size }) => (
-                <MaterialIcons name="search" color={color} size={size} />)
+            <Tab.Screen name="Explore" component={Explore} options={{ tabBarLabel: 'Explore', tabBarIcon: ({ color, size }) => (
+                <MaterialIcons name="explore" color={color} size={size} />)
             }}/>
 
-            <Tab.Screen name="Home" component={Home} options={{ tabBarLabel: 'Home', tabBarIcon: ({ color, size }) => (
-                <MaterialIcons name="house" color={color} size={size} />)
+            <Tab.Screen name="Favourites" component={Favourites} options={{ tabBarLabel: 'Favourites', tabBarIcon: ({ color, size }) => (
+                <MaterialIcons name="favorite" color={color} size={size} />)
             }}/>
 
             <Tab.Screen name="Chat" component={Chat} options={{ tabBarLabel: 'Chat', tabBarIcon: ({ color, size }) => (
-                <MaterialIcons name="message" color={color} size={size} />)
+                <MaterialIcons name="forum" color={color} size={size} />)
             }}/>
 
-            <Tab.Screen name="Setting" component={Setting} options={{ tabBarLabel: 'Setting', tabBarIcon: ({ color, size }) => (
-                <MaterialIcons name="settings" color={color} size={size} />)
+            <Tab.Screen name="Profile" component={Account} options={{ tabBarLabel: 'Profile', tabBarIcon: ({ color, size }) => (
+                <MaterialIcons name="person" color={color} size={size} />)
             }}/>
 
         </Tab.Navigator>
