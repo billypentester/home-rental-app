@@ -51,6 +51,7 @@ function Login({navigation}) {
             <Input type={showpass ? "password" : "text"} InputLeftElement={<Icon as={<MaterialIcons name="lock" />} size={6} marginX="2" color="gray.300" />} InputRightElement={<Pressable onPress={() => setShowpass(!showpass)}>
             <Icon as={<MaterialIcons name={showpass ? "visibility-off" : "visibility"} />} size={5} mr="2" color="muted.400" />
             </Pressable>} focusOutlineColor={'yellow.500'} marginY={'5'} size="lg" color={'white'} placeholder="Password" variant={'rounded'} keyboardType={"password"}  value={password} onChangeText={setPassword} />
+
             
             <TouchableOpacity style={{alignItems:"center",marginTop:3}}>
               <Text style={{color: "white", fontSize:16,textDecorationLine:"underline" }} >Forget Password ?</Text>
