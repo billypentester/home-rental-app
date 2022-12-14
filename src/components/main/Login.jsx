@@ -45,7 +45,7 @@ function Login({navigation}) {
       <View flex={1} width={"100%"} height={"100%"} >
       <ImageBackground
         source={require("home-rental-app/assets/bg.png")} resizeMode="stretch"
-        style={{flex: 1,justifyContent: "center"}}>
+        style={{justifyContent: "center"}}>
 
           <View flex={0.3} alignItems={"center"}>
           <Image
