@@ -8,7 +8,7 @@ import { StatusBar, View } from 'react-native';
 import Explore from './../components/user/Explore/Explore';
 import Favourites from './../components/user/Favourites/Favourites';
 import Chat from './../components/user/Chat/Chat';
-import Account from './../components/user/Account/Account';
+import Profile from './../components/user/Profile/Profile';
 
 import Header from './../Header/Header';
 
@@ -43,7 +43,7 @@ function BottomNavigation() {
                 <MaterialIcons name="forum" color={color} size={size} />)
             }}/>
 
-            <Tab.Screen name="Profile" component={Account} options={{ tabBarLabel: 'Profile', tabBarIcon: ({ color, size }) => (
+            <Tab.Screen name="Profile" component={Profile} options={{ tabBarLabel: 'Profile', tabBarIcon: ({ color, size }) => (
                 <MaterialIcons name="person" color={color} size={size} />)
             }}/>
 
