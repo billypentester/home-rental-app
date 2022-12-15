@@ -7,7 +7,8 @@ import BottomNavigation from './src/navigation/BottomNavigation';
 import Welcome from './src/components/main/welcome';
 import Login from './src/components/main/Login';
 import Register from './src/components/main/Register';
-
+import Edit from './src/components/user/Profile/Edit';
+import Cam from './src/components/user/Profile/Camera.';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,10 +16,11 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name="BottomNavigation" component={BottomNavigation} />
+      
         <Stack.Screen name="Welcome" component={Welcome} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen name="BottomNavigation" component={BottomNavigation} />
         
       </Stack.Navigator>
       <StatusBar style="auto" />

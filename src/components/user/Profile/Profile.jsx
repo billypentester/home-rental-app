@@ -20,7 +20,7 @@ function Profile() {
       <Icon as={<MaterialIcons name="share" />} size={6} position={"absolute"} right={130} color="#fff" />
       </TouchableOpacity>
       <Button onPress={() => console.log("hello world")} backgroundColor={"#BAD7E5"} size={"sm"} position={"absolute"} right={25} >
-      <Text style={{ fontWeight:"600",fontSize:12,color:"#000"}}> Edit Profile </Text>
+      <Text style={{ fontWeight:"500",fontSize:12,color:"#000"}}> Edit Profile </Text>
       </Button>
       </Center>
       <Center flex={0.5} flexDirection={"row"} >
