@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, Pressable } from 'react-native'
 import { NativeBaseProvider, Center, Box,Avatar,Icon,AntDesign,Button,Switch} from 'native-base'
 import { MaterialIcons } from "@expo/vector-icons";
 import styles from './../../../styles/index'
@@ -10,18 +10,23 @@ function Profile() {
   const [name,setName] = useState("Hassan Abdullah")
   const [email,setEmail] = useState("HassanAbdullah@gmail.com")
   const [status,setStatus] = useState(true)
+  const [Notifications,setNotifications] = useState(true)
 
   return (
     <NativeBaseProvider>
     <View style={styles.wrapper}>
-      <Center flex={1.5} flexDirection={"row"} >
+      <Center flex={0.9} backgroundColor={"#1E293B"}>
       <TouchableOpacity>
-      <Icon as={<MaterialIcons name="share" />} size={6} marginX="7" color="#1C315E" />
+      <Icon as={<MaterialIcons name="share" />} size={6} position={"absolute"} right={130} color="#fff" />
       </TouchableOpacity>
-      <Avatar bg={"grey"} marginX={18} source={require("home-rental-app/assets/person.png")} size="xl">
-        <Avatar.Badge bg={status? "red.500" :"green.500"} size={5}/>
+      <Button onPress={() => console.log("hello world")} backgroundColor={"#BAD7E5"} size={"sm"} position={"absolute"} right={25} >
+      <Text style={{ fontWeight:"600",fontSize:12,color:"#000"}}> Edit Profile </Text>
+      </Button>
+      </Center>
+      <Center flex={0.5} flexDirection={"row"} >
+      <Avatar bg={"white"} marginX={18} source={require("home-rental-app/assets/person.png")} size="xl" position={"absolute"} bottom={1} padding={1}  >
+        <Avatar.Badge bg={status? "green.500" : "red.500"} size={5}/>
       </Avatar>
-      <Button onPress={() => console.log("hello world")} backgroundColor={"#1E293B"} size={"sm"}>Edit Profile</Button>
       </Center>
       <Center flex={0.5} >
       <Text style={{fontWeight:"700",fontSize:17,color:"#000"}}> {name} </Text>
@@ -29,8 +34,15 @@ function Profile() {
       </Center>
 
       <Center flex={0.3} flexDirection={"row"} backgroundColor={"#1E293B"} marginTop={3} marginX="10" borderRadius={15}>
-      <Text style={{fontWeight:"500",fontSize:12,color:"#fff",fontStyle:"normal",marginLeft:10}}> STATUS OFFLINE </Text>
-      <Switch defaultIsChecked colorScheme="secondary" onValueChange={()=>setStatus(!status)} />
+      <Text style={{fontWeight:"500",fontSize:12,color:"#fff",fontStyle:"normal",marginLeft:10}}> STATUS {status? "ONLINE" : "OFFLINE" } </Text>
+      <Switch defaultIsChecked colorScheme="green" onValueChange={()=>setStatus(!status)} />
+      </Center>
+
+      <Center flex={0.3} flexDirection={"row"} backgroundColor={"#1E293B"} marginTop={3} marginX="10" borderRadius={15}>
+      <Text style={{fontWeight:"500",fontSize:12,color:"#fff",fontStyle:"normal",marginLeft:0}}> NOTIFICATIONS {Notifications? "ON" : "OFF" } </Text>
+      <Pressable onPress={() => setNotifications(!Notifications)} >
+            <Icon as={<MaterialIcons name={Notifications ? "notifications-on" : "notifications-off"} />} size={5} mr="2" color="muted.300" marginLeft={"3"} />
+            </Pressable>
       </Center>
 
       <Center flex={0.25} flexDirection={"row"} backgroundColor={"gray.200"} marginTop={8} marginX="4" borderRadius={3} >
