@@ -1,19 +1,19 @@
 import { MaterialIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer } from '@react-navigation/native';
 import { getHeaderTitle } from '@react-navigation/elements';
-import { StatusBar, View } from 'react-native';
+import { StatusBar } from 'react-native';
 
 import Find from './../components/user/Find/Find';
 import Home from './../components/user/Home/Home';
 import Chat from './../components/user/Chat/Chat';
-import Setting from './../components/user/Setting/Setting';
+import ProfileNavigation from './../components/user/Profile/ProfileNavigation';
 
 import Header from './../Header/Header';
 
 const Tab = createBottomTabNavigator();
 
-function BottomNavigation() {
+function BottomNavigation({navigation}) {
+
   return (
 
     <>
@@ -41,7 +41,7 @@ function BottomNavigation() {
                 <MaterialIcons name="message" color={color} size={size} />)
             }}/>
 
-            <Tab.Screen name="Setting" component={Setting} options={{ tabBarLabel: 'Setting', tabBarIcon: ({ color, size }) => (
+            <Tab.Screen name="Setting" component={ProfileNavigation} options={{ tabBarLabel: 'Setting', headerShown: false, tabBarIcon: ({ color, size }) => (
                 <MaterialIcons name="settings" color={color} size={size} />)
             }}/>
 

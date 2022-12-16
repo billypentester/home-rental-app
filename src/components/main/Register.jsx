@@ -39,7 +39,7 @@ function Register({navigation}) {
       <ImageBackground source={pic} resizeMode="stretch" style={styles.background}>
           <View style={styles.wrapper}>
             <Center flex={2} justifyContent="center" alignItems="center">
-              <Image source={{uri: "https://www.transparentpng.com/thumb/home/J4GYui-home-round-button-icon-png.png"}} alt="logo" width={'30%'} height={'60%'} />
+              <Image source={{uri: "https://www.transparentpng.com/thumb/home/J4GYui-home-round-button-icon-png.png"}} alt="logo" size={'xl'} />
             </Center>
             <Box flex={6} margin={5}>
               <Text fontSize="3xl" textAlign={'center'} color={'gray.300'} marginY={'2'}>Hey! Welcome</Text>
@@ -52,12 +52,12 @@ function Register({navigation}) {
                 <Button size={'lg'} marginY={2} backgroundColor={'red.500'} _text={{color: "white" }} width={'45%'}>Google</Button>
                 <Button size={'lg'} marginY={2} backgroundColor={'blue.500'} _text={{color: "white" }} width={'45%'}>Facebook</Button>              
               </Box>
-              <Center marginY={2} flexDirection={'row'}>
-                <Text color={'gray.300'} fontSize={'md'}>Already have an account? </Text>
-                <TouchableOpacity onPress={()=>{ navigation.navigate('Login') }}>
-                  <Text _text={{color: "gray.300", fontSize:'md'}}>Login</Text>
-                </TouchableOpacity>
-              </Center>
+              <TouchableOpacity onPress={()=>{ navigation.navigate('Login') }}>
+                <Center marginY={2} flexDirection={'row'}>
+                  <Text color={'gray.300'} fontSize={'md'}>Already have an account? </Text>
+                  <Text color={"gray.300"} fontSize={'md'}>Login</Text>
+                </Center>
+              </TouchableOpacity>
             </Box>
           </View>
       </ImageBackground>

@@ -1,6 +1,6 @@
 import React from 'react'
-import { View, ImageBackground, Dimensions, TextInput} from 'react-native'
-import { NativeBaseProvider, Center, Image, Text, Button} from 'native-base'
+import { View, ImageBackground} from 'react-native'
+import { NativeBaseProvider, Center, Image, Text, Button, StatusBar} from 'native-base'
 import styles from './../../styles/index'
 import pic from './../../images/background.jpg'
 
@@ -8,6 +8,7 @@ function Welcome({navigation}) {
 
   return (
     <NativeBaseProvider>
+      <StatusBar barStyle={'light-content'} />
       <ImageBackground source={pic} resizeMode="stretch" style={styles.background}>
           <View style={styles.wrapper}>
             <Center flex={2} justifyContent="center" alignItems="center">
