@@ -13,9 +13,10 @@ import { firebaseConfig } from '../../Firebase/config'
 
 LogBox.ignoreAllLogs();
 
-const saveData = async () => {
+const saveData = async (user) => {
   try {
     await AsyncStorage.setItem('autenticated', 'true')
+    await AsyncStorage.setItem('user', JSON.stringify(user))
   } catch (e) {
     alert('Failed to save the data to the storage')
   }
@@ -33,8 +34,14 @@ function Login({navigation}) {
 
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        saveData();
-        navigation.navigate("BottomNavigation", {screen: "Home"})
+        saveData(userCredential.user);
+      })
+      .then(() => {
+        setEmail('');
+        setPassword('');
+      })
+      .then(() => {
+        navigation.navigate("BottomNavigation", {screen: "Home" })
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -42,8 +49,7 @@ function Login({navigation}) {
         console.log(errorCode, errorMessage)
         alert(errorCode)
       }
-    );
-    
+    ); 
 
   }
 

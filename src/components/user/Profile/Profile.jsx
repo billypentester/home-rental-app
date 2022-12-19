@@ -1,22 +1,44 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { NativeBaseProvider, Box, Button, Text, Avatar, Center} from 'native-base'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {MaterialIcons} from "@expo/vector-icons";
 
 function Setting({navigation}) {
 
+  const [user, setUser] = React.useState('');
+
   const saveData = async () => {
     try {
       await AsyncStorage.setItem('autenticated', 'false')
+      await AsyncStorage.removeItem('user')
     } catch (e) {
       alert('Failed to save the data to the storage')
     }
   }
 
+  const readData = async () => {
+    try {
+      const value = await AsyncStorage.getItem('user');
+      if(value == null || value == 'false' || value == 'undefined'){
+        console.log('No data found');
+      }
+      else{
+        setUser(JSON.parse(value));
+      }
+    } 
+    catch (e) {
+      alert('Failed to fetch the input from storage');
+    }
+  };
+
   const logout = async() => {
     saveData();
     await navigation.navigate('Login')
   }
+
+  useEffect(() => {
+    readData();
+  }, [])
 
   return (
     <NativeBaseProvider>
@@ -28,8 +50,8 @@ function Setting({navigation}) {
           <Button size={'md'} backgroundColor={'gray.800'}  onPress={()=>{ navigation.navigate('Edit Profile') }}>Edit Profile</Button>
         </Box>
         <Box marginY={1} marginX={'5'}>
-          <Text fontSize={"xl"} fontWeight={'bold'} color={'black'}>Bilal Ahmad</Text>
-          <Text fontSize={"md"} color={'black'}>Bilal@gmail.com</Text>
+          <Text fontSize={"xl"} fontWeight={'bold'} color={'black'}>{user.displayName}</Text>
+          <Text fontSize={"md"} color={'black'}>{user.email}</Text>
         </Box>
         </Box>
       <Box flex={2} marginX={5} marginY={1}>

@@ -4,33 +4,56 @@ import { NativeBaseProvider, Box, Input, Center, Image, Button, Text, Icon, Link
 import styles from './../../styles/index'
 import pic from './../../images/background.jpg'
 import { MaterialIcons } from "@expo/vector-icons";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import {getAuth, createUserWithEmailAndPassword} from 'firebase/auth'
+import {getAuth, createUserWithEmailAndPassword, updateProfile} from 'firebase/auth'
 import { initializeApp } from '@firebase/app'
 import { firebaseConfig } from '../../Firebase/config'
 
 function Register({navigation}) {
 
+  const [displayName, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
 
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
 
-  const IsSignUp = () => {
+  var user = null;
 
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        console.log("User created");
-        navigation.navigate('BottomNavigation', {screen: 'Home'})
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage)
-        alert(errorCode)
-      }
-    );
+  const saveData = async (user) => {
+    try {
+      await AsyncStorage.setItem('autenticated', 'true')
+      await AsyncStorage.setItem('user', JSON.stringify(user))
+    } catch (e) {
+      alert('Failed to save the data to the storage')
+    }
+  }
+
+  const IsSignUp = async() => {
+
+    const { user } = await createUserWithEmailAndPassword(auth, email, password);
+    console.log(`User ${user.uid} created`)
+    await updateProfile(user, {
+      displayName: displayName
+    })
+    .then(() => {
+      saveData(user);
+    })
+    .then(() => {
+      setName('');
+      setEmail('');
+      setPassword('');
+    })
+    .then(() => {
+      navigation.navigate('BottomNavigation', {screen: 'Home'})
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode, errorMessage)
+      alert(errorCode)
+    });
 
   }
 
@@ -43,9 +66,9 @@ function Register({navigation}) {
             </Center>
             <Box flex={6} margin={5}>
               <Text fontSize="3xl" textAlign={'center'} color={'gray.300'} marginY={'2'}>Hey! Welcome</Text>
-              <Input InputLeftElement={<Icon as={<MaterialIcons name="person" />} size={5} marginX="2" color="gray.300" />} focusOutlineColor={'yellow.500'} marginY={'5'} size="lg" color={'white'} placeholder="Full Name" variant={'underlined'} />
-              <Input InputLeftElement={<Icon as={<MaterialIcons name="email" />} size={5} marginX="2" color="gray.300" />} focusOutlineColor={'yellow.500'} marginY={'5'} size="lg" color={'white'} placeholder="Email" variant={'underlined'} />
-              <Input InputLeftElement={<Icon as={<MaterialIcons name="lock" />} size={5} marginX="2" color="gray.300" />} focusOutlineColor={'yellow.500'} marginY={'5'} size="lg" color={'white'} placeholder="Password" variant={'underlined'} />
+              <Input InputLeftElement={<Icon as={<MaterialIcons name="person" />} size={5} marginX="2" color="gray.300" />} focusOutlineColor={'yellow.500'} marginY={'5'} size="lg" color={'white'} placeholder="Full Name" variant={'underlined'} onChangeText={text => setName(text)} value={displayName} />
+              <Input InputLeftElement={<Icon as={<MaterialIcons name="email" />} size={5} marginX="2" color="gray.300" />} focusOutlineColor={'yellow.500'} marginY={'5'} size="lg" color={'white'} placeholder="Email" variant={'underlined'} onChangeText={text => setEmail(text)} value={email} />
+              <Input InputLeftElement={<Icon as={<MaterialIcons name="lock" />} size={5} marginX="2" color="gray.300" />} focusOutlineColor={'yellow.500'} marginY={'5'} size="lg" color={'white'} placeholder="Password" variant={'underlined'} onChangeText={text => setPassword(text)} value={password} />
               <Button size={'lg'} marginY={2} onPress={IsSignUp} backgroundColor={'yellow.500'}_text={{color: "black" }} width={'100%'}>Sign up</Button>
               <Center marginY={2} _text={{ color:'gray.300', fontSize:'md' }}>or</Center>
               <Box justifyContent={'space-around'} alignContent={'space-around'} flexDirection={'row'}>
