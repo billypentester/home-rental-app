@@ -7,9 +7,10 @@ import pic from './../../images/background.jpg'
 import { MaterialIcons } from "@expo/vector-icons";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import {getAuth, signInWithEmailAndPassword} from 'firebase/auth'
-import { initializeApp } from '@firebase/app'
-import { firebaseConfig } from '../../Firebase/config'
+import {signInWithEmailAndPassword} from 'firebase/auth'
+import { auth } from '../../Firebase/autentication'
+
+console.log(auth)
 
 LogBox.ignoreAllLogs();
 
@@ -26,9 +27,6 @@ function Login({navigation}) {
 
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
 
   const IsLoginIn = () => {
 

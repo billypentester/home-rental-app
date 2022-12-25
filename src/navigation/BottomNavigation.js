@@ -37,7 +37,7 @@ function BottomNavigation({navigation}) {
                 <MaterialIcons name="house" color={color} size={size} />)
             }}/>
 
-            <Tab.Screen name="Chat" component={Chat} options={{ tabBarLabel: 'Chat', tabBarIcon: ({ color, size }) => (
+            <Tab.Screen name="Chat" component={Chat} options={{ tabBarStyle: { display: "none" }, tabBarLabel: 'Chat', tabBarIcon: ({ color, size }) => (
                 <MaterialIcons name="message" color={color} size={size} />)
             }}/>
 

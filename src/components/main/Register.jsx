@@ -6,18 +6,16 @@ import pic from './../../images/background.jpg'
 import { MaterialIcons } from "@expo/vector-icons";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import {getAuth, createUserWithEmailAndPassword, updateProfile} from 'firebase/auth'
-import { initializeApp } from '@firebase/app'
-import { firebaseConfig } from '../../Firebase/config'
+import {createUserWithEmailAndPassword, updateProfile} from 'firebase/auth'
+import { auth } from '../../Firebase/autentication'
+
+console.log(auth)
 
 function Register({navigation}) {
 
   const [displayName, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
 
   var user = null;
 

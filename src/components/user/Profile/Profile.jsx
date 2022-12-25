@@ -10,11 +10,23 @@ function Setting({navigation}) {
   const saveData = async () => {
     try {
       await AsyncStorage.setItem('autenticated', 'false')
+      console.log('autenticated : false')
       await AsyncStorage.removeItem('user')
+      console.log('user : null')
     } catch (e) {
       alert('Failed to save the data to the storage')
     }
   }
+
+  const deleteProfile = async () => {
+    try {
+      await AsyncStorage.removeItem('user')
+      navigation.navigate('Login')
+    } catch (e) {
+      alert('Failed to save the data to the storage')
+    }
+  }
+
 
   const readData = async () => {
     try {
@@ -32,13 +44,13 @@ function Setting({navigation}) {
   };
 
   const logout = async() => {
-    saveData();
+    await saveData();
     await navigation.navigate('Login')
   }
 
   useEffect(() => {
     readData();
-  }, [])
+  }, [user])
 
   return (
     <NativeBaseProvider>
@@ -46,8 +58,9 @@ function Setting({navigation}) {
         <Box backgroundColor={'#1E293B'}>
           <Avatar position={'relative'} top={'50%'} left={'3%'} size="xl" m={1} source={{uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTxFBXtxpsxNhINJ5opoMXgSkTqfiZLbjtymhvWqMO2XvAwAWEEktCDVLQlq2ojTfz_Ls&usqp=CAU"}}/>
         </Box>
-        <Box flex={1} alignItems={'flex-end'} marginY={'2'} marginX={'5'}>
-          <Button size={'md'} backgroundColor={'gray.800'}  onPress={()=>{ navigation.navigate('Edit Profile') }}>Edit Profile</Button>
+        <Box flex={1} flexDirection={'row'} justifyContent={'flex-end'} marginY={'2'} marginX={'5'}>
+          <Button size={'md'} marginLeft={1} backgroundColor={'gray.800'}  onPress={()=>{ navigation.navigate('Edit Profile') }}>Edit Profile</Button>
+          <Button size={'md'} marginLeft={1} backgroundColor={'red.600'}  onPress={deleteProfile}>Delete Profile</Button>
         </Box>
         <Box marginY={1} marginX={'5'}>
           <Text fontSize={"xl"} fontWeight={'bold'} color={'black'}>{user.displayName}</Text>

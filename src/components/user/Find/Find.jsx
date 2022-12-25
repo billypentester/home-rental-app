@@ -7,8 +7,8 @@ const readData = async () => {
   try {
     const value = await AsyncStorage.getItem('autenticated');
     const user = await AsyncStorage.getItem('user');
-    console.log("I'm authenticated: ", value)
-    console.log("User: ", user)
+    console.log("I'm authenticated: ", value);
+    console.log("My user: ", user.email);
   } catch (e) {
     alert('Failed to fetch the input from storage');
   }
