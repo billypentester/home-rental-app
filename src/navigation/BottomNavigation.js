@@ -5,7 +5,7 @@ import { StatusBar } from 'react-native';
 
 import Find from './../components/user/Find/Find';
 import Home from './../components/user/Home/Home';
-import Chat from './../components/user/Chat/Chat';
+import ChatNavigation from './../components/user/Chat/ChatNavigation';
 import ProfileNavigation from './../components/user/Profile/ProfileNavigation';
 
 import Header from './../Header/Header';
@@ -37,7 +37,7 @@ function BottomNavigation({navigation}) {
                 <MaterialIcons name="house" color={color} size={size} />)
             }}/>
 
-            <Tab.Screen name="Chat" component={Chat} options={{ tabBarStyle: { display: "none" }, tabBarLabel: 'Chat', tabBarIcon: ({ color, size }) => (
+            <Tab.Screen name="Chats" component={ChatNavigation} options={{ tabBarStyle: { display: "none" }, headerShown: false, tabBarLabel: 'Chats', tabBarIcon: ({ color, size }) => (
                 <MaterialIcons name="message" color={color} size={size} />)
             }}/>
 

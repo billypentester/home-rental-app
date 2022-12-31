@@ -10,16 +10,15 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {signInWithEmailAndPassword} from 'firebase/auth'
 import { auth } from '../../Firebase/autentication'
 
-console.log(auth)
-
 LogBox.ignoreAllLogs();
 
-const saveData = async (user) => {
+const saveAuth = async () => {
   try {
     await AsyncStorage.setItem('autenticated', 'true')
-    await AsyncStorage.setItem('user', JSON.stringify(user))
-  } catch (e) {
-    alert('Failed to save the data to the storage')
+    await AsyncStorage.setItem('user', JSON.stringify(auth.currentUser))
+  } 
+  catch (e) {
+    alert('Failed to save the data to the storage : Login Screen')
   }
 }
 
@@ -31,8 +30,8 @@ function Login({navigation}) {
   const IsLoginIn = () => {
 
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        saveData(userCredential.user);
+      .then(() => {
+        saveAuth();
       })
       .then(() => {
         setEmail('');

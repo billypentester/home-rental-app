@@ -1,56 +1,48 @@
-import React, { useEffect } from 'react'
-import { NativeBaseProvider, Box, Button, Text, Avatar, Center} from 'native-base'
+import React, { useEffect, useCallback } from 'react'
+import { NativeBaseProvider, Box, Button, Text, Avatar} from 'native-base'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {MaterialIcons} from "@expo/vector-icons";
+import { auth } from '../../../Firebase/autentication';
+import { signOut } from 'firebase/auth';
+import { useFocusEffect } from '@react-navigation/native';
+import { deleteUser } from 'firebase/auth';
 
 function Setting({navigation}) {
 
   const [user, setUser] = React.useState('');
 
-  const saveData = async () => {
-    try {
-      await AsyncStorage.setItem('autenticated', 'false')
-      console.log('autenticated : false')
-      await AsyncStorage.removeItem('user')
-      console.log('user : null')
-    } catch (e) {
-      alert('Failed to save the data to the storage')
-    }
+  const logout = async() => {
+    await signOut(auth);
+    await AsyncStorage.setItem('autenticated', 'false')
+    await AsyncStorage.removeItem('user')
+    await navigation.navigate('Login')
   }
-
-  const deleteProfile = async () => {
-    try {
-      await AsyncStorage.removeItem('user')
-      navigation.navigate('Login')
-    } catch (e) {
-      alert('Failed to save the data to the storage')
-    }
-  }
-
 
   const readData = async () => {
     try {
-      const value = await AsyncStorage.getItem('user');
-      if(value == null || value == 'false' || value == 'undefined'){
-        console.log('No data found');
-      }
-      else{
-        setUser(JSON.parse(value));
-      }
+      setUser(auth.currentUser);
+      const value = await AsyncStorage.getItem('autenticated');
     } 
     catch (e) {
       alert('Failed to fetch the input from storage');
     }
   };
 
-  const logout = async() => {
-    await saveData();
-    await navigation.navigate('Login')
+  const deleteProfile = async () => {
+    try {
+      await AsyncStorage.removeItem('user')
+      await deleteUser(auth.currentUser)
+      navigation.navigate('Login')
+    } catch (e) {
+      alert('Failed to save the data to the storage')
+    }
   }
 
-  useEffect(() => {
-    readData();
-  }, [user])
+  useFocusEffect(
+    React.useCallback(() => {
+      readData();
+    }, [user])
+  );
 
   return (
     <NativeBaseProvider>

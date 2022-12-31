@@ -7,9 +7,9 @@ import { MaterialIcons } from "@expo/vector-icons";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {createUserWithEmailAndPassword, updateProfile} from 'firebase/auth'
-import { auth } from '../../Firebase/autentication'
+import { auth, database } from '../../Firebase/autentication'
+import { doc, setDoc } from "firebase/firestore"; 
 
-console.log(auth)
 
 function Register({navigation}) {
 
@@ -19,24 +19,47 @@ function Register({navigation}) {
 
   var user = null;
 
-  const saveData = async (user) => {
+  const saveAuth = async () => {
     try {
       await AsyncStorage.setItem('autenticated', 'true')
-      await AsyncStorage.setItem('user', JSON.stringify(user))
-    } catch (e) {
+      await AsyncStorage.setItem('user', JSON.stringify(auth.currentUser))
+    } 
+    catch (e) {
       alert('Failed to save the data to the storage')
     }
   }
 
+  const saveFirebase = async (user) => {
+    try {
+      const docRef = doc(database, "users", user.uid);
+      await setDoc(docRef, {
+        displayName: user.displayName,
+        email: user.email,
+        photoURL: user.photoURL,
+        uid: user.uid,
+        chats: []
+      });
+    }
+    catch (e) {
+      alert('Failed to save the data to the storage')
+    }
+  }
+
+
+
   const IsSignUp = async() => {
 
     const { user } = await createUserWithEmailAndPassword(auth, email, password);
-    console.log(`User ${user.uid} created`)
+    console.log(`User ${user.email} created`)
     await updateProfile(user, {
-      displayName: displayName
+      displayName: displayName,
+      photoURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTxFBXtxpsxNhINJ5opoMXgSkTqfiZLbjtymhvWqMO2XvAwAWEEktCDVLQlq2ojTfz_Ls&usqp=CAU"
     })
     .then(() => {
-      saveData(user);
+      saveAuth();
+    })
+    .then(() => {
+      saveFirebase(auth.currentUser);
     })
     .then(() => {
       setName('');

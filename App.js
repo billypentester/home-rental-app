@@ -28,8 +28,10 @@ export default function App() {
       else{
         setIsAuth(true);
       }
-    } catch (e) {
-      alert('Failed to fetch the input from storage');
+    } 
+    catch (e) {
+      alert('Failed to fetch the input from storage : welcome screen');
+      console.log(e);
     }
   };
 
