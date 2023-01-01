@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { View, Text, TouchableOpacity, Pressable } from 'react-native'
-import { NativeBaseProvider, Center, Box,Avatar,Icon,AntDesign,Button,Switch} from 'native-base'
+import { NativeBaseProvider, Center, Box,Avatar,Icon,AntDesign,Button,Switch,Modal,VStack,FormControl,Input} from 'native-base'
 import { MaterialIcons } from "@expo/vector-icons";
 import styles from './../../../styles/index'
 
 
 function Profile() {
-
+  const [modalVisible, setModalVisible] = React.useState(false);
   const [name,setName] = useState("Hassan Abdullah")
   const [email,setEmail] = useState("HassanAbdullah@gmail.com")
   const [status,setStatus] = useState(true)
@@ -92,6 +92,36 @@ function Profile() {
       <TouchableOpacity>
       <Icon as={<MaterialIcons name="arrow-forward-ios" />} size={4} marginLeft={237} color="#1E293B" />
       </TouchableOpacity>
+      </Center>
+
+      <Center flex={0.5} flexDirection={"row"} marginTop={1}>
+      <Modal isOpen={modalVisible} onClose={() => setModalVisible(false)} avoidKeyboard justifyContent="center" bottom="4" size="lg">
+        <Modal.Content>
+          <Modal.CloseButton />
+          <Modal.Header>Are You Sure?</Modal.Header>
+          <Modal.Body>
+            Enter your password to verify youself
+            <FormControl mt="3">
+              <FormControl.Label>Password</FormControl.Label>
+              <Input />
+            </FormControl>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button flex="1" onPress={() => {
+            setModalVisible(false);
+          }}>
+              Proceed
+            </Button>
+          </Modal.Footer>
+        </Modal.Content>
+      </Modal>
+      <VStack space={8} alignItems="center">
+        <Button w="250" backgroundColor={"lightgrey"} onPress={() => {
+        setModalVisible(!modalVisible);
+      }}>
+          <Text style={{color:"red"}}>Delete Account</Text>
+        </Button>
+        </VStack>
       </Center>
 
       <Center flex={1.5} >

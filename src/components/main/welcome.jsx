@@ -11,7 +11,7 @@ function Welcome({navigation}) {
   return (
 
 <NativeBaseProvider>
-<ImageBackground source={require("home-rental-app/assets/wel.gif")} resizeMode="stretch" style={styles.background}>
+<ImageBackground source={require("home-rental-app/assets/welcome.gif")} resizeMode="stretch" style={styles.background}>
     <View style={styles.wrapper}>
       <Center flex={1} justifyContent="center" alignItems="center">
         <Image source={require("home-rental-app/assets/logo1.png")} alt="logo" width={'100%'} height={'70%'} />
@@ -27,7 +27,7 @@ function Welcome({navigation}) {
         <Text style={styless.SaveText}>LOGIN</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={[styless.SaveBtn,{backgroundColor:"white",shadowColor:"white",marginTop:20}]}
+      <TouchableOpacity style={[styless.SaveBtn,{backgroundColor:"#1E293B",shadowColor:"black",marginTop:20}]}
         onPress={()=>
         {navigation.navigate('Register')}
       }      >
@@ -55,7 +55,7 @@ const styless = StyleSheet.create({
   },
   SaveText:{
     fontWeight:'bold',
-    color:'black',
+    color:'white',
     fontSize:20,
     alignSelf:'center',
     
