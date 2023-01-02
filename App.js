@@ -18,7 +18,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name="Filter" component={Filter} />
+      {/* <Stack.Screen name="Filter" component={Filter} /> */}
       <Stack.Screen name="BottomNavigation" component={BottomNavigation} />
         <Stack.Screen name="Welcome" component={Welcome} />
         <Stack.Screen name="Login" component={Login} />
