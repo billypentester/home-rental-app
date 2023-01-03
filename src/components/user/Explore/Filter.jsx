@@ -39,8 +39,10 @@ function Filter() {
   const [bed, setBed] = useState(0);
   const [bath, setBath] = useState(0);
 
-  const instState = [];
-  const [list, setList] = React.useState(instState);
+  
+
+  const facilities = [];
+  const [list, setList] = React.useState(facilities);
   const [inputValue, setInputValue] = React.useState("");
 
   const addItem = (title) => {
@@ -114,7 +116,7 @@ function Filter() {
             />
           </Center>
 
-          <Center flex={0.3} margin={2} backgroundColor={"gray.200"} rounded={"100"}>
+          <Center flex={0.3} margin={2} backgroundColor={"gray.200"} rounded={"100"} shadow={"9"}>
             <Box alignItems="center" margin={8}>
               <VStack space={2}>
                 <HStack alignItems="baseline">
@@ -153,7 +155,7 @@ function Filter() {
             </Box>
             </Center>
 
-            <Center flex={1} margin={2} backgroundColor={"gray.200"} rounded={"100"} height={"200"}>
+            <Center flex={1} margin={2} backgroundColor={"gray.200"} rounded={"100"} height={"200"} shadow={"9"}>
               
             <Box maxW="300" w="300">
             
@@ -231,7 +233,7 @@ function Filter() {
             
             </Center>
 
-            <Center flex={0.3} margin={2} backgroundColor={"gray.200"} rounded={"100"}>
+            <Center flex={0.3} margin={2} backgroundColor={"gray.200"} rounded={"100"} shadow={"9"}>
 
             <Box maxW="300" w="100%" margin={8}>
               <Heading mb="2" size="md">
@@ -293,7 +295,7 @@ function Filter() {
 
             </Center>
 
-            <Center flex={0.3} margin={2} backgroundColor={"gray.200"} rounded={"100"}>
+            <Center flex={0.3} margin={2} backgroundColor={"gray.200"} rounded={"100"} shadow={"9"}>
             <Box maxW="300" w="100%" margin={6}>
               <Heading mb="2" size="md">
                 Built-up Area
@@ -354,7 +356,7 @@ function Filter() {
 
             </Center>
 
-            <Center flex={0.3} margin={2} backgroundColor={"gray.200"} rounded={"100"}>
+            <Center flex={0.3} margin={2} backgroundColor={"gray.200"} rounded={"100"} shadow={"9"}>
             <Box maxW="300" w="100%" margin={6}>
               <Heading mb="2" size="md">
                 Rooms
@@ -440,6 +442,7 @@ function Filter() {
               View Properties
             </Button>
             </Center>
+            
           
         </ScrollView>
       </View>

@@ -23,7 +23,7 @@ function Register({navigation}) {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         console.log("User created");
-        navigation.navigate('BottomNavigation', {screen: 'Explore'})
+        navigation.navigate('Location')
       })
       .catch((error) => {
         const errorCode = error.code;

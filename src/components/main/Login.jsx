@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, ImageBackground,TouchableOpacity } from 'react-native'
-import { NativeBaseProvider, Box, Input, Center, Image, Button, Text, Icon, Link,Alert,Pressable} from 'native-base'
+import { NativeBaseProvider, Box, Input, Center, Image, Button, Text, Icon, Link,Alert,Pressable,Modal,FormControl} from 'native-base'
 import styles from './../../styles/index'
 import { MaterialIcons } from "@expo/vector-icons";
 import { LinearGradient } from 'react-native-svg';
@@ -14,7 +14,8 @@ function Login({navigation}) {
 
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-  const [showpass,setShowpass] = React.useState(true)
+  const [showpass,setShowpass] = React.useState(true);
+  const [modalVisible, setModalVisible] = React.useState(false);
 
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
@@ -53,7 +54,28 @@ function Login({navigation}) {
             </Pressable>} focusOutlineColor={'yellow.500'} marginY={'5'} size="lg" color={'white'} placeholder="Password" variant={'rounded'} keyboardType={"password"}  value={password} onChangeText={setPassword} />
 
             
-            <TouchableOpacity style={{alignItems:"center",marginTop:3}}>
+              <Modal isOpen={modalVisible} onClose={() => setModalVisible(false)} avoidKeyboard justifyContent="center" bottom="4" size="lg">
+              <Modal.Content>
+                <Modal.CloseButton />
+                <Modal.Header>Forget Password</Modal.Header>
+                <Modal.Body>
+                  Enter Email to reset your password
+                  <FormControl mt="3">
+                    <FormControl.Label>Email</FormControl.Label>
+                    <Input />
+                  </FormControl>
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button flex="1" backgroundColor={"#344D67"} onPress={() => {
+                  setModalVisible(false);
+                }}>
+                    Proceed
+                  </Button>
+                </Modal.Footer>
+              </Modal.Content>
+            </Modal>
+
+            <TouchableOpacity style={{alignItems:"center",marginTop:3}} onPress={() => {setModalVisible(!modalVisible)}}>
               <Text style={{color: "white", fontSize:16,textDecorationLine:"underline" }} >Forget Password ?</Text>
             </TouchableOpacity>
           </Box>

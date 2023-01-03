@@ -5,7 +5,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import styles from './../../../styles/index'
 
 
-function Profile() {
+function Profile({navigation}) {
   const [modalVisible, setModalVisible] = React.useState(false);
   const [name,setName] = useState("Hassan Abdullah")
   const [email,setEmail] = useState("HassanAbdullah@gmail.com")
@@ -60,8 +60,8 @@ function Profile() {
       <Center flex={0.3} flexDirection={"row"} backgroundColor={"white"} marginTop={1}>
       <Icon as={<MaterialIcons name="favorite" />} size={5} color="#1E293B" />
       <Text style={{fontWeight:"500",fontSize:14,color:"#000",fontStyle:"normal"}}>   Favourites</Text>
-      <TouchableOpacity>
-      <Icon as={<MaterialIcons name="arrow-forward-ios" />} size={4} marginLeft={230} color="#1E293B" />
+      <TouchableOpacity onPress={()=>{navigation.navigate('Favourites')}}>
+      <Icon as={<MaterialIcons name="arrow-forward-ios" />} size={4} marginLeft={230} color="#1E293B"  />
       </TouchableOpacity>
       </Center>
 
@@ -80,8 +80,8 @@ function Profile() {
       <Center flex={0.3} flexDirection={"row"} backgroundColor={"white"} marginTop={2}>
       <Icon as={<MaterialIcons name="location-on"/>} size={5} color="#1E293B" />
       <Text style={{fontWeight:"500",fontSize:14,color:"#000",fontStyle:"normal"}}>   Location</Text>
-      <TouchableOpacity>
-      <Icon as={<MaterialIcons name="arrow-forward-ios" />} size={4} marginLeft={239} color="#1E293B" />
+      <TouchableOpacity onPress={()=>{navigation.navigate('Location')}}>
+      <Icon as={<MaterialIcons name="arrow-forward-ios" />} size={4} marginLeft={239} color="#1E293B"  />
       </TouchableOpacity>
       </Center>
 
