@@ -46,12 +46,13 @@ export default function Properties({FlatListData}) {
               borderRadius:20,
               margin:10,
               width:180,
-              height:235,
+              height:230,
             }}
           >
     
               <IconButton
               mb="4"
+              hitSlop={{ top: 20, bottom: 20, left: 20, right: 20 }}
               variant="unstyled"
               colorScheme={"white"}
               position={"absolute"}

@@ -231,6 +231,7 @@ function Explore({navigation}) {
               bg="red.500"
               colorScheme="red"
               borderRadius="full"
+              onPress={()=>{navigation.navigate('AddProperty')}}
               shadow={"9"}
               icon={
                 <Icon

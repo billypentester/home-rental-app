@@ -116,7 +116,7 @@ function Filter() {
             />
           </Center>
 
-          <Center flex={0.3} margin={2} backgroundColor={"gray.200"} rounded={"100"} shadow={"9"}>
+          <Center flex={0.3} margin={2} backgroundColor={"white"} rounded={"100"} shadow={"9"}>
             <Box alignItems="center" margin={8}>
               <VStack space={2}>
                 <HStack alignItems="baseline">
@@ -155,7 +155,7 @@ function Filter() {
             </Box>
             </Center>
 
-            <Center flex={1} margin={2} backgroundColor={"gray.200"} rounded={"100"} height={"200"} shadow={"9"}>
+            <Center flex={1} margin={2} backgroundColor={"white"} rounded={"100"} height={"200"} shadow={"9"}>
               
             <Box maxW="300" w="300">
             
@@ -233,7 +233,7 @@ function Filter() {
             
             </Center>
 
-            <Center flex={0.3} margin={2} backgroundColor={"gray.200"} rounded={"100"} shadow={"9"}>
+            <Center flex={0.3} margin={2} backgroundColor={"white"} rounded={"100"} shadow={"9"}>
 
             <Box maxW="300" w="100%" margin={8}>
               <Heading mb="2" size="md">
@@ -295,7 +295,7 @@ function Filter() {
 
             </Center>
 
-            <Center flex={0.3} margin={2} backgroundColor={"gray.200"} rounded={"100"} shadow={"9"}>
+            <Center flex={0.3} margin={2} backgroundColor={"white"} rounded={"100"} shadow={"9"}>
             <Box maxW="300" w="100%" margin={6}>
               <Heading mb="2" size="md">
                 Built-up Area
@@ -356,7 +356,7 @@ function Filter() {
 
             </Center>
 
-            <Center flex={0.3} margin={2} backgroundColor={"gray.200"} rounded={"100"} shadow={"9"}>
+            <Center flex={0.3} margin={2} backgroundColor={"white"} rounded={"100"} shadow={"9"}>
             <Box maxW="300" w="100%" margin={6}>
               <Heading mb="2" size="md">
                 Rooms

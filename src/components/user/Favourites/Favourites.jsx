@@ -96,6 +96,7 @@ function Favourites() {
     
               <IconButton
               mb="4"
+              hitSlop={{ top: 20, bottom: 20, left: 20, right: 20 }}
               variant="unstyled"
               colorScheme={"white"}
               position={"absolute"}

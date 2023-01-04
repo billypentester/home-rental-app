@@ -13,6 +13,7 @@ import { Camera } from 'expo-camera';
 import Filter from './src/components/user/Explore/Filter';
 import Location from './src/components/main/Location';
 import Properties from './src/components/user/Explore/Properties';
+import AddProperty from './src/components/user/Explore/AddProperty';
 
 const Stack = createNativeStackNavigator();
 
@@ -27,6 +28,7 @@ export default function App() {
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="Location" component={Location} />
         <Stack.Screen name="Filter" component={Filter} />
+        <Stack.Screen name="AddProperty" component={AddProperty} />
       </Stack.Navigator>
       <StatusBar style="auto" />
     </NavigationContainer>
