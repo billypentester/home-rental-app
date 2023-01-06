@@ -20,10 +20,12 @@ import {
   Entypo,
   Ionicons,
   MaterialCommunityIcons,
+  Fontisto,
 } from "@expo/vector-icons";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { TabView, SceneMap } from "react-native-tab-view";
 import Properties from "./Properties";
+import data from "./dummyData";
 
 const FirstRoute = () => (
   <Center flex={1} my="4">
@@ -41,15 +43,7 @@ const renderScene = SceneMap({
 
 function Explore({navigation}) {
   const [address, setAddress] = useState("");
-  const data = [{
-    title: "House #123", price: "20000",location:"Lahore, Pakistan", image: 'a'
-  },
-  {
-    title: "XYZ Villa", price: "60000",location:"Islambad, Pakistan", image: 'b'
-  },
-  {
-    title: "House in Bahria", price:"35000",location:"Lahore, Pakistan" , image: 'c'
-  }]
+
 
 
   function TabViewCustom() {
@@ -283,11 +277,12 @@ function Explore({navigation}) {
   return (
     <NativeBaseProvider>
       <View style={styles.wrapper}>
-        <ScrollView keyboardShouldPersistTaps="handled">
-          <Center flex={0.2} backgroundColor={"#1E293B"} flexDirection={"row"}>
+        
+          <Center flex={0.} backgroundColor={"#1E293B"} flexDirection={"row"} width={"100%"}>
             <GooglePlacesAutocomplete
               placeholder="Search"
               fetchDetails={true}
+
               onPress={(data, details = null) => {
                 const latC = details.geometry.location.lat.toString();
                 const lngC = details.geometry.location.lng.toString();
@@ -295,7 +290,7 @@ function Explore({navigation}) {
               }}
               styles={{
                 textInputContainer: {
-                  width: "95%",
+                  width: "90%",
                   marginTop: 9,
                   marginLeft: 10,
                 },
@@ -310,6 +305,7 @@ function Explore({navigation}) {
                 predefinedPlacesDescription: {
                   color: "#1faadb",
                 },
+                
               }}
               query={{
                 key: "AIzaSyDbfbWiIvjK79U_aI8urPCbcxcMWEVirW4",
@@ -319,19 +315,23 @@ function Explore({navigation}) {
               }}
             />
             <IconButton
-              icon={<Icon as={Ionicons} name="md-search-circle" />}
+              icon={<Icon as={Entypo} name="magnifying-glass" />}
               // onPress={() => }
               borderRadius="full"
+              position={"absolute"}
+              right={25}
               _icon={{
-                color: "white",
-                size: "50",
+                color: "#1E293B",
+                size: "35",
               }}
               _hover={{
                 bg: "coolGray.800:alpha.20",
               }}
             />
           </Center>
+          <ScrollView keyboardShouldPersistTaps="handled">
           <TabViewCustom />
+          
           <Center flex={0.3} margin={3} backgroundColor={"gray.200"} shadow={"9"} rounded={"10"}>
           <Heading mb="2" size="md" alignSelf={"flex-start"} margin={"3"}>
                 Houses
@@ -357,7 +357,7 @@ function Explore({navigation}) {
           <Heading mb="2" size="md" alignSelf={"flex-start"} margin={"3"}>
                 Villas
               </Heading>
-          <Properties FlatListData={data}/>
+          <Properties FlatListData={data} />
 
           <Center flex={0.3} >
           <Heading mb="2" size="md" fontWeight={"100"} fontSize={30} margin={"3"}>

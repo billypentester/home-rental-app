@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, LogBox } from "react-native";
+import { View, Text, LogBox,FlatList } from "react-native";
 import {
   Image,
   NativeBaseProvider,
@@ -62,11 +62,24 @@ function AddProperty() {
         setImage3(result.assets[0].uri);
         setCount(0)
       }
-      console.log(Ptype,Rent,Area,title,Description,address,Phone)
+      console.log(Ptype,Rent,Area,title,Description,address,Phone, images)
+      setImages((prevList) => {
+        return [
+          ...prevList,
+          {
+            image: result.assets[0].uri,
+            num: images.length
+          },
+        ];
+      });
+
+      
         
     }
   };
 
+  
+  const [images, setImages] = React.useState([]);
   
 
   const facilities = [];
@@ -87,7 +100,7 @@ function AddProperty() {
         ...prevList,
         {
           title: title,
-          isCompleted: false,
+          
         },
       ];
     });
@@ -424,18 +437,38 @@ function AddProperty() {
             <Text style={{ fontWeight:"600",fontSize:12,color:"#000"}}>IMPORT</Text>
             </Button>
 
-            <Center flexDirection={"row"}>
+            <Center flexDirection={"row"} backgroundColor={"gray.400"} width={300} rounded={"9"} shadow="9">
 
-              <Image margin={3} borderRadius={5}  source={{
-                uri: image1
-              }} alt="Alternate Text" size="20" />
-              <Image  margin={3} borderRadius={5} source={{
-                uri: image2
-              }} alt="Alternate Text" size="20" />
-              <Image margin={3} borderRadius={5} source={{
-                uri:image3
-              }} alt="Alternate Text" size="20" />
-
+          <FlatList
+          horizontal
+          inverted
+    
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
+          keyExtractor={(myArray,item)=>item.toString()}
+          data={images}
+          renderItem={({ item }) => (
+            <Center>
+            
+            <Image margin={3} borderRadius={5}  source={{
+              uri: item.image
+            }} alt="Alternate Text" size="20" />
+            <IconButton
+            position={"absolute"}
+                  icon={<Icon as={Entypo} name="trash" />}
+                  onPress={() => {images.splice(item.num,1)}}
+                  borderRadius="full"
+                  _icon={{
+                    color: "white",
+                    size: "md",
+                  }}
+                  _hover={{
+                    bg: "coolGray.800:alpha.20",
+                  }}
+                />
+                </Center>
+        )}
+      />
             </Center>
                 
               </VStack>

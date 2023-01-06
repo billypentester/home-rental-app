@@ -59,7 +59,6 @@ function Filter() {
         ...prevList,
         {
           title: title,
-          isCompleted: false,
         },
       ];
     });
@@ -116,7 +115,7 @@ function Filter() {
             />
           </Center>
 
-          <Center flex={0.3} margin={2} backgroundColor={"white"} rounded={"100"} shadow={"9"}>
+          <Center flex={0.3} margin={2} backgroundColor={"white"} rounded={"50"} shadow={"9"}>
             <Box alignItems="center" margin={8}>
               <VStack space={2}>
                 <HStack alignItems="baseline">
@@ -155,7 +154,7 @@ function Filter() {
             </Box>
             </Center>
 
-            <Center flex={1} margin={2} backgroundColor={"white"} rounded={"100"} height={"200"} shadow={"9"}>
+            <Center flex={1} margin={2} backgroundColor={"white"} rounded={"50"} height={"200"} shadow={"9"}>
               
             <Box maxW="300" w="300">
             
@@ -168,11 +167,11 @@ function Filter() {
                   bg: "teal.600",
                   endIcon: <CheckIcon size="5" />
                 }} mt={1} onValueChange={itemValue => setInputValue(itemValue)}>
-                    <Select.Item label="Wifi" value="Wifi" />
-                    <Select.Item label="Security Cameras" value="Security Cameras" />
-                    <Select.Item label="Water" value="Water" />
-                    <Select.Item label="Electricity" value="Electricity" />
-                    <Select.Item label="Gas" value="Gas" />
+                    <Select.Item label="Wifi" value="wifi" />
+                    <Select.Item label="Security Cameras" value="videocam" />
+                    <Select.Item label="Water" value="water" />
+                    <Select.Item label="Electricity" value="flash-sharp" />
+                    <Select.Item label="Gas" value="flame" />
                   </Select>
                   <IconButton
                     borderRadius="sm"
@@ -233,7 +232,7 @@ function Filter() {
             
             </Center>
 
-            <Center flex={0.3} margin={2} backgroundColor={"white"} rounded={"100"} shadow={"9"}>
+            <Center flex={0.3} margin={2} backgroundColor={"white"} rounded={"50"} shadow={"9"}>
 
             <Box maxW="300" w="100%" margin={8}>
               <Heading mb="2" size="md">
@@ -295,7 +294,7 @@ function Filter() {
 
             </Center>
 
-            <Center flex={0.3} margin={2} backgroundColor={"white"} rounded={"100"} shadow={"9"}>
+            <Center flex={0.3} margin={2} backgroundColor={"white"} rounded={"50"} shadow={"9"}>
             <Box maxW="300" w="100%" margin={6}>
               <Heading mb="2" size="md">
                 Built-up Area
@@ -356,7 +355,7 @@ function Filter() {
 
             </Center>
 
-            <Center flex={0.3} margin={2} backgroundColor={"white"} rounded={"100"} shadow={"9"}>
+            <Center flex={0.3} margin={2} backgroundColor={"white"} rounded={"50"} shadow={"9"}>
             <Box maxW="300" w="100%" margin={6}>
               <Heading mb="2" size="md">
                 Rooms

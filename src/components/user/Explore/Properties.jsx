@@ -12,12 +12,14 @@ import {
   NativeBaseProvider,
   IconButton,
   Icon,
+  Center,
 } from "native-base";
 
 import {
   EvilIcons,
   AntDesign
 } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 
 
@@ -25,6 +27,7 @@ import {
 
 export default function Properties({FlatListData}) {
   const data = FlatListData
+  const navigation = useNavigation()
 
   const [like,setLike] = useState(false) 
 
@@ -48,15 +51,27 @@ export default function Properties({FlatListData}) {
               width:180,
               height:230,
             }}
+            onPress={()=>{navigation.navigate("Details",item)}}
           >
     
+            
+            <Image style={{ width: "100%", height: 110, borderRadius:20}} source={require("home-rental-app/assets/image.jpg")}></Image>
+            <View style={{ justifyContent: "center", alignItems: "center" }}>
+              
+              <Text style={{ marginTop: 10, fontWeight: "300" , color:"white"}}>
+                {item.title}
+              </Text>
+              <Center flexDirection={"row"}>
+              <Text style={{ color: "#fff", fontSize: 10, marginTop: 10 , fontWeight:"800"}}>
+                Rs. {item.price} /month
+              </Text>
               <IconButton
               mb="4"
               hitSlop={{ top: 20, bottom: 20, left: 20, right: 20 }}
               variant="unstyled"
               colorScheme={"white"}
               position={"absolute"}
-              left={-3}
+              left={87}
               top={-3}
               onPress={()=>{setLike(!like)}}
               icon={
@@ -69,15 +84,8 @@ export default function Properties({FlatListData}) {
               />
               }
             />
-            
-            <Image style={{ width: "100%", height: 110, marginTop: 10 , borderRadius:20}} source={require("home-rental-app/assets/image.jpg")}></Image>
-            <View style={{ justifyContent: "center", alignItems: "center" }}>
-              <Text style={{ marginTop: 10, fontWeight: "300" , color:"white"}}>
-                {item.title}
-              </Text>
-              <Text style={{ color: "#fff", fontSize: 10, marginTop: 10 , fontWeight:"800"}}>
-                Rs. {item.price} /month
-              </Text>
+
+              </Center>
               <View style={{flexDirection:"row"}}>
               <Icon
                   position={"absolute"}

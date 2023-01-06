@@ -3,6 +3,8 @@ import { View, Text, TouchableOpacity, Pressable } from 'react-native'
 import { NativeBaseProvider, Center, Box,Avatar,Icon,AntDesign,Button,Switch,Modal,VStack,FormControl,Input} from 'native-base'
 import { MaterialIcons } from "@expo/vector-icons";
 import styles from './../../../styles/index'
+import * as Sharing from 'expo-sharing';
+
 
 
 function Profile({navigation}) {
@@ -16,7 +18,7 @@ function Profile({navigation}) {
     <NativeBaseProvider>
     <View style={styles.wrapper}>
       <Center flex={0.9} backgroundColor={"#1E293B"}>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={()=>Sharing.shareAsync("file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540hassan_abdullah%252Fhome-rental-app/ImagePicker/074d3dc9-c282-4376-836e-103ac74abe27.jpeg",{})}>
       <Icon as={<MaterialIcons name="share" />} size={6} position={"absolute"} right={130} color="#fff" />
       </TouchableOpacity>
       <Button onPress={() => console.log("hello world")} backgroundColor={"#BAD7E5"} size={"sm"} position={"absolute"} right={25} >
@@ -52,7 +54,7 @@ function Profile({navigation}) {
       <Center flex={0.3} flexDirection={"row"} backgroundColor={"white"} marginTop={2}>
       <Icon as={<MaterialIcons name="home" />} size={5} color="#1E293B" />
       <Text style={{fontWeight:"500",fontSize:14,color:"#000",fontStyle:"normal"}}>   My Places</Text>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={()=>{navigation.navigate('MyPlaces')}}>
       <Icon as={<MaterialIcons name="arrow-forward-ios" />} size={4} marginLeft={230} color="#1E293B" />
       </TouchableOpacity>
       </Center>
@@ -68,7 +70,7 @@ function Profile({navigation}) {
       <Center flex={0.3} flexDirection={"row"} backgroundColor={"white"} marginTop={1}>
       <Icon as={<MaterialIcons name="bookmarks" />} size={5} color="#1E293B" />
       <Text style={{fontWeight:"500",fontSize:14,color:"#000",fontStyle:"normal"}}>   Bookings</Text>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={()=>{navigation.navigate('Bookings')}}>
       <Icon as={<MaterialIcons name="arrow-forward-ios" />} size={4} marginLeft={237} color="#1E293B" />
       </TouchableOpacity>
       </Center>

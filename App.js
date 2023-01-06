@@ -14,6 +14,11 @@ import Filter from './src/components/user/Explore/Filter';
 import Location from './src/components/main/Location';
 import Properties from './src/components/user/Explore/Properties';
 import AddProperty from './src/components/user/Explore/AddProperty';
+import ShowProperties from './src/components/user/Profile/ShowProperties';
+import MyPlaces from './src/components/user/Profile/MyPlaces';
+import Bookings from './src/components/user/Profile/Bookings';
+import Details from './src/components/user/Explore/Details';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -29,6 +34,11 @@ export default function App() {
         <Stack.Screen name="Location" component={Location} />
         <Stack.Screen name="Filter" component={Filter} />
         <Stack.Screen name="AddProperty" component={AddProperty} />
+        <Stack.Screen name="MyPlaces" component={MyPlaces} />
+        <Stack.Screen name="Bookings" component={Bookings} />
+        <Stack.Screen name="Properties" component={Properties} />
+        <Stack.Screen name="Details" component={Details} />
+
       </Stack.Navigator>
       <StatusBar style="auto" />
     </NavigationContainer>
