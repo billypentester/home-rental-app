@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { NativeBaseProvider, Modal, Stack, FormControl, Input, Center, Box, Button, Text, Avatar} from 'native-base'
+import { NativeBaseProvider, Modal, FormControl, Input, Box, Button, Text, Avatar} from 'native-base'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {MaterialIcons} from "@expo/vector-icons";
 import { auth } from '../../../Firebase/autentication';
@@ -11,7 +11,10 @@ function Setting({navigation}) {
   const isVisible = useIsFocused();
 
   const [user, setUser] = React.useState(auth.currentUser);
+  const [modalVisible, setModalVisible] = React.useState(false);
 
+  const initialRef = React.useRef(null);
+  const finalRef = React.useRef(null);
 
   const logout = async() => {
     await signOut(auth)
@@ -28,6 +31,11 @@ function Setting({navigation}) {
     catch (e) {
       alert('Failed to fetch the input from storage');
     }
+  };
+
+  const verify = () => {
+    console.log("verify")
+    setModalVisible(!modalVisible);
   };
 
 
@@ -55,7 +63,7 @@ function Setting({navigation}) {
 
         <Box flex={1} flexDirection={'row'} justifyContent={'flex-end'} marginY={'2'} marginX={'5'}>
           <Button size={'md'} marginLeft={1} backgroundColor={'gray.800'}  onPress={()=>{ navigation.navigate('Edit Profile') }}>Edit Profile</Button>
-          <Button size={'md'} marginLeft={1} backgroundColor={'red.600'}  onPress={()=>{deleteProfile}}>Delete Profile</Button>
+          <Button size={'md'} marginLeft={1} backgroundColor={'red.600'}  onPress={() => { verify() }}>Delete Profile</Button>
         </Box>
 
         <Box marginY={1} marginX={'5'}>
@@ -108,6 +116,33 @@ function Setting({navigation}) {
         <Button size={'md'} backgroundColor={'gray.700'} m={'5'} onPress={logout}>Log out</Button>
      
       </Box>
+
+      <Modal isOpen={modalVisible} onClose={() => setModalVisible(false)} initialFocusRef={initialRef} finalFocusRef={finalRef}>
+        <Modal.Content>
+          <Modal.CloseButton />
+          <Modal.Header>Delete Account</Modal.Header>
+          <Modal.Body>
+            <FormControl>
+              <FormControl.Label>Enter Password</FormControl.Label>
+              <Input ref={initialRef} />
+            </FormControl>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button.Group space={2}>
+              <Button variant="ghost" colorScheme="blueGray" onPress={() => {
+              setModalVisible(false);
+            }}>
+                Cancel
+              </Button>
+              <Button backgroundColor={'red.500'} onPress={() => {
+              setModalVisible(false);
+            }}>
+                Delete
+              </Button>
+            </Button.Group>
+          </Modal.Footer>
+        </Modal.Content>
+      </Modal>
 
     </NativeBaseProvider>
   )
