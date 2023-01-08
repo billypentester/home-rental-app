@@ -1,10 +1,11 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StatusBar } from 'react-native'
 
 function Header({title}) {
   return (
     <View>
-        <Text style={{  padding: 15, backgroundColor: '#1E293B', flexDirection: 'row', fontSize: 20, color:'white' }}>{title}</Text>
+        <StatusBar backgroundColor="#1E293B" barStyle="light-content" />
+        <Text style={{  padding: 15, backgroundColor: '#1E293B', flexDirection: 'row', fontSize: 20, color:'white', textAlign:'center' }}>{title}</Text>
     </View>
   )
 }

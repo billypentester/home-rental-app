@@ -4,7 +4,8 @@ import { getHeaderTitle } from '@react-navigation/elements';
 import { StatusBar } from 'react-native';
 
 import Find from './../components/user/Find/Find';
-import Home from './../components/user/Home/Home';
+import Home from '../components/user/Favourite/Home';
+import FavNavigation from "../components/user/Favourite/FavNavigation";
 import ChatNavigation from './../components/user/Chat/ChatNavigation';
 import ProfileNavigation from './../components/user/Profile/ProfileNavigation';
 
@@ -21,7 +22,7 @@ function BottomNavigation({navigation}) {
         <Tab.Navigator initialRouteName="Home" screenOptions={{ 
             tabBarActiveTintColor: '#e5e5e5', 
             tabBarHideOnKeyboard: true,
-            tabBarStyle: { backgroundColor:"#1E293B", paddingTop:10, height:70, borderRadius: 10, marginHorizontal: 20, marginBottom: 20, position: 'absolute' },
+            tabBarStyle: { backgroundColor:"#1E293B", paddingTop:10, height:70, borderRadius: 10, marginHorizontal: 20, marginBottom: 20, position: 'absolute', borderTopWidth: 0, elevation: 0, shadowOpacity: 0, shadowOffset: { height: 0 }, shadowRadius: 0, overflow: 'hidden' },
             tabBarLabelStyle: { paddingVertical: 10},
             tabBarIcon:{ color:"#eeee" }, 
             header: ({ navigation, route, options }) => {
@@ -33,7 +34,7 @@ function BottomNavigation({navigation}) {
                 <MaterialIcons name="search" color={color} size={size} />)
             }}/>
 
-            <Tab.Screen name="Home" component={Home} options={{ tabBarLabel: 'Home', tabBarIcon: ({ color, size }) => (
+            <Tab.Screen name="Favourite" component={FavNavigation} options={{ tabBarStyle: { display: "none" }, headerShown: false, tabBarLabel: 'Favourite', tabBarIcon: ({ color, size }) => (
                 <MaterialIcons name="house" color={color} size={size} />)
             }}/>
 

@@ -38,7 +38,7 @@ function Login({navigation}) {
         setPassword('');
       })
       .then(() => {
-        navigation.navigate("BottomNavigation", {screen: "Home" })
+        navigation.navigate("BottomNavigation", {screen: "Find" })
       })
       .catch((error) => {
         const errorCode = error.code;
